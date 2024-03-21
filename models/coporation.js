@@ -10,3 +10,5 @@ const CorporationSchema = new Schema({
 CorporationSchema.virtual("url").get(function () {
   return `/catalog/corporation/${this._id}`;
 });
+
+module.exports = mongoose.model("Corporation", CorporationSchema);
