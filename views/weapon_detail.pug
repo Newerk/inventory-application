@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h1= title 
+    if weaponsArr.length 
+        ul 
+            each weapon in weaponsArr 
+                li
+                    a(href=weapon.url) #{weapon.name} 

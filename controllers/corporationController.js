@@ -13,7 +13,7 @@ module.exports = {
   corp_list: asyncHandler(async (req, res, next) => {
     const allCorps = await Corporation.find().sort({ name: 1 }).exec();
 
-    res.render("corp_list", {
+    res.render("corp_detail", {
       title: "Corporations",
       corporations: allCorps,
     });
