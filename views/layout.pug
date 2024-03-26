@@ -4,4 +4,45 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    div(class="body-container")
+      block sidebar 
+        ul(class='sidebar-nav')
+          li
+            a(href="/catalog") Home
+          li
+            a(href="/catalog/corporations") All Corporations
+          li
+            a(href="/catalog/weapons") All Weapons
+            ul 
+              li 
+                a(href="/catalog/weapons/arms") Arm 
+              li 
+                a(href="/catalog/weapons/back") Back 
+          li
+            a(href="/catalog/parts") All Parts 
+            ul 
+              li 
+                a(href="/catalog/parts/head") Head 
+              li 
+                a(href="/catalog/parts/body") Body 
+              li 
+                a(href="/catalog/parts/arms") Arms 
+              li 
+                a(href="/catalog/parts/legs") Legs 
+              li 
+                a(href="/catalog/parts/boosters") Boosters 
+              li 
+                a(href="/catalog/parts/fcs") FCS 
+              li 
+                a(href="/catalog/parts/generators") Generators 
+
+          li
+            a(href="/catalog/corporation/create") Create Corporation
+
+          li
+            a(href="/catalog/weapon/create") Create Weapon
+
+          li
+            a(href="/catalog/part/create") Create Part
+
+      block content
