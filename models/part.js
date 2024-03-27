@@ -6,6 +6,7 @@ const PartSchema = new Schema({
   manufacturer: {
     type: Schema.Types.ObjectId,
     ref: "Corporation",
+    required: true,
   },
   part_type: {
     type: String,
