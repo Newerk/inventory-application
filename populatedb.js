@@ -34,7 +34,7 @@ async function main() {
 // We pass the index to the ...Create functions so that, for example,
 // corp[0] will always be the Company ARQUEBUS, regardless of the order
 // in which the elements of promise.all's argument complete.
-async function corporationCreate(index, name) {
+async function corporationCreate(name) {
   const corp = new Corporation({
     name: name,
     weapons: await Weapon.find({ manufacturer: name }).sort(1),
@@ -42,7 +42,6 @@ async function corporationCreate(index, name) {
   });
 
   await corp.save();
-  corp[index] = corp;
   console.log(`Added corp: ${name}`);
 }
 
@@ -54,8 +53,7 @@ async function weaponCreate(
   weapon_type,
   reload_type,
   additional_effects,
-  manufacturer,
-  price
+  manufacturer
 ) {
   const weaponDetail = {
     name: name,
@@ -66,7 +64,6 @@ async function weaponCreate(
     reload_type: reload_type,
     additional_effects: additional_effects,
     manufacturer: manufacturer,
-    price: price,
   };
 
   const weapon = new Weapon(weaponDetail);
@@ -75,12 +72,11 @@ async function weaponCreate(
   console.log(`Added weapon: ${name}`);
 }
 
-async function partCreate(name, manufacturer, part_type, price) {
+async function partCreate(name, manufacturer, part_type) {
   const partDetail = {
     name: name,
     manufacturer: manufacturer,
     part_type: part_type,
-    price: price,
   };
 
   const part = new Part(partDetail);
@@ -91,26 +87,40 @@ async function partCreate(name, manufacturer, part_type, price) {
 async function createCorporation() {
   console.log("Adding corporations");
   await Promise.all([
-    genreCreate(0, "ALLMIND"),
-    genreCreate(1, "ARQUEBUS CORP"),
-    genreCreate(2, "BALAM"),
-    genreCreate(3, "BAWS"),
-    genreCreate(4, "DAFENG"),
-    genreCreate(5, "ELCANO FOUNDRY"),
-    genreCreate(6, "FIRMEZA"),
-    genreCreate(7, "FURLONG DYNAMICS"),
-    genreCreate(8, "MELINITE"),
-    genreCreate(9, "RAD"),
-    genreCreate(10, "RUBICON RESEARCH INSTITUTE"),
-    genreCreate(11, "SCHNEIDER"),
-    genreCreate(12, "TAKIGAWA"),
-    genreCreate(13, "VCPL"),
+    genreCreate("ALLMIND"),
+    genreCreate("ARQUEBUS CORP"),
+    genreCreate("BALAM"),
+    genreCreate("BAWS"),
+    genreCreate("DAFENG"),
+    genreCreate("ELCANO FOUNDRY"),
+    genreCreate("FIRMEZA"),
+    genreCreate("FURLONG DYNAMICS"),
+    genreCreate("MELINITE"),
+    genreCreate("RAD"),
+    genreCreate("RUBICON RESEARCH INSTITUTE"),
+    genreCreate("SCHNEIDER"),
+    genreCreate("TAKIGAWA"),
+    genreCreate("VCPL"),
   ]);
 }
 
 async function createWeapons() {
   console.log("Adding weapons");
-  await Promise.all([]);
+
+  const params = require("./DB_CREATE_PARAMS");
+
+  await Promise.all([
+    weaponCreate(
+      name,
+      attached_to,
+      part_class,
+      attack_type,
+      weapon_type,
+      reload_type,
+      additional_effects,
+      manufacturer
+    ),
+  ]);
 }
 
 async function createParts() {

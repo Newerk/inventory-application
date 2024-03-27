@@ -13,11 +13,6 @@ const PartSchema = new Schema({
     enum: ["Head", "Body", "Arms", "Legs", "Boosters", "FCS", "Generator"],
     required: true,
   },
-  price: {
-    type: Number,
-    min: 0,
-    required: true,
-  },
 });
 
 PartSchema.virtual("url").get(function () {
@@ -25,4 +20,3 @@ PartSchema.virtual("url").get(function () {
 });
 
 module.exports = mongoose.model("Part", PartSchema);
-

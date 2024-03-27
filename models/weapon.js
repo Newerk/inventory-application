@@ -110,8 +110,7 @@ const WeaponSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Corporation",
     required: true,
-  },
-  price: { type: Number, min: 0, required: true },
+  }
 });
 
 WeaponSchema.virtual("url").get(function () {
