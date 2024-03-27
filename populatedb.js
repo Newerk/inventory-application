@@ -10,8 +10,7 @@ const userArgs = process.argv.slice(2);
 const Corporation = require("./models/coporation");
 const Weapon = require("./models/weapon");
 const Part = require("./models/part");
-
-const corporations = [];
+const params = require("./DB_CREATE_PARAMS");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -107,23 +106,39 @@ async function createCorporation() {
 async function createWeapons() {
   console.log("Adding weapons");
 
-  const params = require("./DB_CREATE_PARAMS");
-
   await Promise.all([
-    weaponCreate(
-      name,
-      attached_to,
-      part_class,
-      attack_type,
-      weapon_type,
-      reload_type,
-      additional_effects,
-      manufacturer
-    ),
+    params.armsWeaponParams.forEach((arr) => {
+      weaponCreate(...arr);
+    }),
+    params.backWeaponParams.forEach((arr) => {
+      weaponCreate(...arr);
+    }),
   ]);
 }
 
 async function createParts() {
   console.log("Adding parts");
-  await Promise.all([]);
+  await Promise.all([
+    params.headPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.bodyPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.armsPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.legsPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.boosterPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.fcsPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+    params.generatorPartParams.forEach((arr) => {
+      partCreate(...arr);
+    }),
+  ]);
 }
