@@ -1,19 +1,23 @@
-const Corporation = require("./models/coporation");
-const Weapon = require("./models/weapon");
-const Part = require("./models/part");
+// const Corporation = require("./models/coporation"));
+// const Weapon = require("./models/weapon"));
+// const Part = require("./models/part"));
 
-exports.armsWeaponParams = [
-  [
-    "PB-033m ASHMEAD",
-    "Arms",
-    "Pile Bunker",
-    "Kinetic",
-    "Melee",
-    "Overheat",
-    "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+async function getCorpID(name) {
+  const corp = await Corporation.findOne({ name: name });
+  return corp._id;
+}
+
+(exports.armsWeaponParams = weaponCreate(
+  "PB-033m ASHMEAD",
+  "Arms",
+  "Pile Bunker",
+  "Kinetic",
+  "Melee",
+  "Overheat",
+  "None",
+  getCorpID("BALAM")
+)),
+  weaponCreate(
     "DF-ET09 TAI-YANG-SHOU",
     "Arms",
     "Explosive Thrower",
@@ -21,9 +25,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "DAFENG" }),
-  ],
-  [
+    getCorpID("DAFENG")
+  ),
+  weaponCreate(
     "WB-0010 DOUBLE TROUBLE",
     "Arms",
     "Chainsaw",
@@ -31,9 +35,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "VP-67EB",
     "Arms",
     "Stun Baton",
@@ -41,9 +45,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "Shock",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VP-67LD",
     "Arms",
     "Laser Dagger",
@@ -51,9 +55,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "Vvc-770LB",
     "Arms",
     "Laser Blade",
@@ -61,9 +65,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "Vvc-774LS",
     "Arms",
     "Laser Slicer",
@@ -71,9 +75,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "VE-67LLA",
     "Arms",
     "Laser Lance",
@@ -81,9 +85,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "44-143 HMMR",
     "Arms",
     "Plasma Thrower",
@@ -91,9 +95,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ALLMIND" }),
-  ],
-  [
+    getCorpID("ALLMIND")
+  ),
+  weaponCreate(
     "HI-32: BU-TT/A",
     "Arms",
     "Pulse Blade",
@@ -101,9 +105,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "IA-C01W2: MOONLIGHT",
     "Arms",
     "Light Wave Blade",
@@ -111,9 +115,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "IA-C01W7: ML-REDSHIFT",
     "Arms",
     "Coral Oscillator",
@@ -121,9 +125,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "IB-C03W2: WLT 101",
     "Arms",
     "Coral Oscillator",
@@ -131,9 +135,9 @@ exports.armsWeaponParams = [
     "Melee",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "MA-J-200 RANSETSU-RF",
     "Arms",
     "Burst Rifle",
@@ -141,9 +145,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "LR-036 CURTIS",
     "Arms",
     "Linear Rifle",
@@ -151,9 +155,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "LR-037 HARRIS",
     "Arms",
     "Linear Rifle",
@@ -161,9 +165,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "RF-024 TURNER",
     "Arms",
     "Assault Rifle",
@@ -171,9 +175,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "RF-025 SCUDDER",
     "Arms",
     "Assault Rifle",
@@ -181,9 +185,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "MA-J-201 RANSETSU-AR",
     "Arms",
     "Burst Assault Rifle",
@@ -191,9 +195,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "MG-014 LUDLOW",
     "Arms",
     "Machine Gun",
@@ -201,9 +205,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "DF-MG-02 CHANG-CHEN",
     "Arms",
     "Machine Gun",
@@ -211,9 +215,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "DAFENG" }),
-  ],
-  [
+    getCorpID("DAFENG")
+  ),
+  weaponCreate(
     "MA-E-210 ETSUJIN",
     "Arms",
     "Burst Machine Gun",
@@ -221,9 +225,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "DF-GA-08 HU-BEN",
     "Arms",
     "Gatling Gun",
@@ -231,9 +235,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "DAFENG" }),
-  ],
-  [
+    getCorpID("DAFENG")
+  ),
+  weaponCreate(
     "SG-026 HALDEMAN",
     "Arms",
     "Shotgun",
@@ -241,9 +245,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "SG-027 ZIMMERMAN",
     "Arms",
     "Shotgun",
@@ -251,9 +255,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "WR-0777 SWEET SIXTEEN",
     "Arms",
     "Shotgun",
@@ -261,9 +265,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "HG-003 COQUILLETT",
     "Arms",
     "Handgun",
@@ -271,9 +275,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "HG-004 DUCKETT",
     "Arms",
     "Handgun",
@@ -281,9 +285,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "MA-E-211 SAMPU",
     "Arms",
     "Burst Handgun",
@@ -291,9 +295,9 @@ exports.armsWeaponParams = [
     "Burst",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "EL-PW-00 VIENTO",
     "Arms",
     "Needle Gun",
@@ -301,9 +305,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "ELCANO FOUNDRY" }),
-  ],
-  [
+    getCorpID("ELCANO FOUNDRY")
+  ),
+  weaponCreate(
     "VP-66EG",
     "Arms",
     "Stun Gun",
@@ -311,9 +315,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "Shock",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "DF-BA-06 XUAN-GE",
     "Arms",
     "Bazooka",
@@ -321,9 +325,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "DAFENG" }),
-  ],
-  [
+    getCorpID("DAFENG")
+  ),
+  weaponCreate(
     "MAJESTIC",
     "Arms",
     "Bazooka",
@@ -331,9 +335,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "MELINITE" }),
-  ],
-  [
+    getCorpID("MELINITE")
+  ),
+  weaponCreate(
     "LITTLE GEM",
     "Arms",
     "Bazooka",
@@ -341,9 +345,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "MELINITE" }),
-  ],
-  [
+    getCorpID("MELINITE")
+  ),
+  weaponCreate(
     "44-141 JVLN ALPHA",
     "Arms",
     "Detonating Bazooka",
@@ -351,9 +355,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "ALLMIND" }),
-  ],
-  [
+    getCorpID("ALLMIND")
+  ),
+  weaponCreate(
     "DF-GR-07 GOU-CHEN",
     "Arms",
     "Grenade Launcher",
@@ -361,9 +365,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "DAFENG" }),
-  ],
-  [
+    getCorpID("DAFENG")
+  ),
+  weaponCreate(
     "DIZZY",
     "Arms",
     "Grenade Launcher",
@@ -371,9 +375,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "MELINITE" }),
-  ],
-  [
+    getCorpID("MELINITE")
+  ),
+  weaponCreate(
     "IRIDIUM",
     "Arms",
     "Grenade Launcher",
@@ -381,9 +385,9 @@ exports.armsWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "MELINITE" }),
-  ],
-  [
+    getCorpID("MELINITE")
+  ),
+  weaponCreate(
     "MA-T-222 KYORAI",
     "Arms",
     "Napalm Bomb Launcher",
@@ -391,9 +395,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Single Shot",
     "ACS Failure",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "MA-T-223 KYORIKU",
     "Arms",
     "Jamming Bomb Launcher",
@@ -401,9 +405,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Single Shot",
     "Camera Disruption",
-    Corporation.findOne({ name: "BAWS" }),
-  ],
-  [
+    getCorpID("BAWS")
+  ),
+  weaponCreate(
     "WS-1200 THERAPIST",
     "Arms",
     "Stun Bomb Launcher",
@@ -411,9 +415,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Magazine",
     "Shock",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "WB-0000 BAD COOK",
     "Arms",
     "Flamethrower",
@@ -421,9 +425,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Overheat",
     "ACS Failure",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "VP-66LR",
     "Arms",
     "Laser Rifle",
@@ -431,9 +435,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VE-66LRA",
     "Arms",
     "Laser Rifle",
@@ -441,9 +445,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VE-66LRB",
     "Arms",
     "Laser Rifle",
@@ -451,9 +455,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "WUERGER/66E",
     "Arms",
     "Laser Shotgun",
@@ -461,9 +465,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "SCHNEIDER" }),
-  ],
-  [
+    getCorpID("SCHNEIDER")
+  ),
+  weaponCreate(
     "VP-66LS",
     "Arms",
     "Laser Shotgun",
@@ -471,9 +475,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VP-66LH",
     "Arms",
     "Laser Handgun",
@@ -481,9 +485,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "Vvc-760PR",
     "Arms",
     "Plasma Rifle",
@@ -491,9 +495,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "IA-C01W1: NEBULA",
     "Arms",
     "Plasma Rifle",
@@ -501,9 +505,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "IA-C01W6: NB-REDSHIFT",
     "Arms",
     "Coral Rifle",
@@ -511,9 +515,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "IB-C03W1: WLT 011",
     "Arms",
     "Coral Rifle",
@@ -521,9 +525,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "44-142 KRSV",
     "Arms",
     "Multi Energy Rifle",
@@ -531,9 +535,9 @@ exports.armsWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ALLMIND" }),
-  ],
-  [
+    getCorpID("ALLMIND")
+  ),
+  weaponCreate(
     "HI-16: GU-Q1",
     "Arms",
     "Pulse Gun",
@@ -541,9 +545,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "HI-18: GU-A2",
     "Arms",
     "Pulse Gun",
@@ -551,9 +555,9 @@ exports.armsWeaponParams = [
     "Full-Auto",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "HML-G2/P19MLT-04",
     "Arms",
     "Missile Launcher",
@@ -561,9 +565,9 @@ exports.armsWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "HML-G3/P08SPL-06",
     "Arms",
     "Split Missile Launcher",
@@ -571,9 +575,9 @@ exports.armsWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "WS-5000 APERITIF",
     "Arms",
     "Siege Missile Launcher",
@@ -581,12 +585,9 @@ exports.armsWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-];
-
-exports.backWeaponParams = [
-  [
+    getCorpID("RAD")
+  ),
+  (exports.backWeaponParams = weaponCreate(
     "VP-61PS",
     "Back",
     "Pulse Shield",
@@ -594,9 +595,9 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  )),
+  weaponCreate(
     "SI-24: SU-Q5",
     "Back",
     "Pulse Shield",
@@ -604,9 +605,9 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "SI-27: SU-R8",
     "Back",
     "Pulse Shield",
@@ -614,9 +615,9 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "VP-61PB",
     "Back",
     "Pulse Buckler",
@@ -624,19 +625,19 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "SI-29:SU-TT/C",
     "Back",
-    "Pulse Bucker",
+    "Pulse Buckler",
     "Kinetic",
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "TAKIGAWA" }),
-  ],
-  [
+    getCorpID("TAKIGAWA")
+  ),
+  weaponCreate(
     "VE-61PSA",
     "Back",
     "Pulse Scutum",
@@ -644,9 +645,9 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "IB-C03W4: NGI 028",
     "Back",
     "Coral Shield",
@@ -654,9 +655,9 @@ exports.backWeaponParams = [
     "Shield",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "SB-033M MORLEY",
     "Back",
     "Spread Bazooka",
@@ -664,9 +665,9 @@ exports.backWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "EARSHOT",
     "Back",
     "Spread Bazooka",
@@ -674,9 +675,9 @@ exports.backWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "SONGBIRDS",
     "Back",
     "Grenade Cannon",
@@ -684,9 +685,9 @@ exports.backWeaponParams = [
     "Burst",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "MELINITE" }),
-  ],
-  [
+    getCorpID("MELINITE")
+  ),
+  weaponCreate(
     "VE-60SNA",
     "Back",
     "Stun Needle Launcher",
@@ -694,9 +695,9 @@ exports.backWeaponParams = [
     "Semi-Auto",
     "Single Shot",
     "Shock",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VP-60LCS",
     "Back",
     "Laser Cannon",
@@ -704,9 +705,9 @@ exports.backWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VE-60LCA",
     "Back",
     "Laser Cannon",
@@ -714,9 +715,9 @@ exports.backWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "VP-60LCD",
     "Back",
     "Diffuse Laser Cannon",
@@ -724,9 +725,9 @@ exports.backWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "FASAN/60E",
     "Back",
     "Plasma Cannon",
@@ -734,9 +735,9 @@ exports.backWeaponParams = [
     "Charge",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "SCHNEIDER" }),
-  ],
-  [
+    getCorpID("SCHNEIDER")
+  ),
+  weaponCreate(
     "KRANICH/60Z",
     "Back",
     "Pulse Cannon",
@@ -744,9 +745,9 @@ exports.backWeaponParams = [
     "Full-Auto",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "SCHNEIDER" }),
-  ],
-  [
+    getCorpID("SCHNEIDER")
+  ),
+  weaponCreate(
     "EULE/60D",
     "Back",
     "Pulse Shield Launcher",
@@ -754,9 +755,9 @@ exports.backWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "SCHNEIDER" }),
-  ],
-  [
+    getCorpID("SCHNEIDER")
+  ),
+  weaponCreate(
     "IA-C01W3: AURORA",
     "Back",
     "Light Wave Cannon",
@@ -764,9 +765,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "BML-G1/P20MLT-04",
     "Back",
     "Missile Launcher",
@@ -774,9 +775,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P03MLT-06",
     "Back",
     "Missile Launcher",
@@ -784,9 +785,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P05MLT-10",
     "Back",
     "Missile Launcher",
@@ -794,9 +795,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P19SPL-12",
     "Back",
     "Split Missle Launcher",
@@ -804,9 +805,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P16SPL-08",
     "Back",
     "Split Missle Launcher",
@@ -814,9 +815,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P17SPL-16",
     "Back",
     "Split Missle Launcher",
@@ -824,9 +825,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P31DUO-02",
     "Back",
     "Dual Missile Launcher",
@@ -834,9 +835,9 @@ exports.backWeaponParams = [
     "Homing",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P32DUO-03",
     "Back",
     "Dual Missile Launcher",
@@ -844,9 +845,9 @@ exports.backWeaponParams = [
     "Homing",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G2/P08DUO-03",
     "Back",
     "Dual Missile Launcher",
@@ -854,9 +855,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P01VTC-04",
     "Back",
     "Vertical Missile Launcher",
@@ -864,9 +865,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P03VTC-08",
     "Back",
     "Vertical Missile Launcher",
@@ -874,9 +875,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P07VTC-12",
     "Back",
     "Vertical Missile Launcher",
@@ -884,9 +885,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G3/P04ACT-01",
     "Back",
     "Active Homing Missile Launcher",
@@ -894,9 +895,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G3/P05ACT-02",
     "Back",
     "Active Homing Missile Launcher",
@@ -904,9 +905,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "BML-G1/P29CNT",
     "Back",
     "Container Missile Launcher",
@@ -914,9 +915,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-  ],
-  [
+    getCorpID("FURLONG DYNAMICS")
+  ),
+  weaponCreate(
     "WR-0999 DELIVERY BOY",
     "Back",
     "Cluster Missile Launcher",
@@ -924,9 +925,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "WS-5001 SOUP",
     "Back",
     "Scatter Missile Launcher",
@@ -934,9 +935,9 @@ exports.backWeaponParams = [
     "Homing",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "RAD" }),
-  ],
-  [
+    getCorpID("RAD")
+  ),
+  weaponCreate(
     "45-091 JVLN BETA",
     "Back",
     "Detonating Missile Launcher",
@@ -944,9 +945,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "ALLMIND" }),
-  ],
-  [
+    getCorpID("ALLMIND")
+  ),
+  weaponCreate(
     "EL-PW-01 TRUENO",
     "Back",
     "Needle Missle Launcher",
@@ -954,9 +955,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "ELCANO FOUNDRY" }),
-  ],
-  [
+    getCorpID("ELCANO FOUNDRY")
+  ),
+  weaponCreate(
     "Vvc-703PM",
     "Back",
     "Plasma Missile Launcher",
@@ -964,9 +965,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "Vvc-706PM",
     "Back",
     "Plasma Missile Launcher",
@@ -974,9 +975,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "Vvc-70PM",
     "Back",
     "Plasma Missile Launcher",
@@ -984,9 +985,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
-  [
+    getCorpID("VCPL")
+  ),
+  weaponCreate(
     "IB-C03W3: NGI 006",
     "Back",
     "Coral Missile Launcher",
@@ -994,9 +995,9 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE")
+  ),
+  weaponCreate(
     "BO-044 HUXLEY",
     "Back",
     "Bullet Orbit",
@@ -1004,9 +1005,9 @@ exports.backWeaponParams = [
     "Burst",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "BALAM" }),
-  ],
-  [
+    getCorpID("BALAM")
+  ),
+  weaponCreate(
     "45-091 ORBT",
     "Back",
     "Laser Orbit",
@@ -1014,9 +1015,9 @@ exports.backWeaponParams = [
     "Burst",
     "Overheat",
     "None",
-    Corporation.findOne({ name: "ALLMIND" }),
-  ],
-  [
+    getCorpID("ALLMIND")
+  ),
+  weaponCreate(
     "VP-60LT",
     "Back",
     "Laser Turret",
@@ -1024,9 +1025,9 @@ exports.backWeaponParams = [
     "Semi-Auto",
     "Magazine",
     "None",
-    Corporation.findOne({ name: "ARQUEBUS CORP" }),
-  ],
-  [
+    getCorpID("ARQUEBUS CORP")
+  ),
+  weaponCreate(
     "Vvc-700LD",
     "Back",
     "Laser Drone",
@@ -1034,197 +1035,197 @@ exports.backWeaponParams = [
     "Homing",
     "Single Shot",
     "None",
-    Corporation.findOne({ name: "VCPL" }),
-  ],
+    getCorpID("VCPL")
+  ),
+  (exports.headPartParams = [
+    weaponCreate("AH-J-124 BASHO", getCorpID("BAWS"), "Head"),
+    weaponCreate("AH-J-124/RC JAILBREAK", getCorpID("BAWS"), "Head"),
+    weaponCreate("HD-011 MELANDER", getCorpID("BALAM"), "Head"),
+    weaponCreate("HD-033M VERRILL", getCorpID("BALAM"), "Head"),
+    weaponCreate("HD-012 MELANDER C3", getCorpID("BALAM"), "Head"),
+    weaponCreate("DF-HD-08 TIAN-QIANG", getCorpID("DAFENG"), "Head"),
+    weaponCreate("VP-44S", getCorpID("ARQUEBUS CORP"), "Head"),
+    weaponCreate("VP-44D", getCorpID("ARQUEBUS CORP"), "Head"),
+    weaponCreate("NACHTREIHER/44E", getCorpID("SCHNEIDER"), "Head"),
+    weaponCreate("KASUAR/44Z", getCorpID("SCHNEIDER"), "Head"),
+    weaponCreate("VE-44A", getCorpID("ARQUEBUS CORP"), "Head"),
+    weaponCreate("VE-44B", getCorpID("ARQUEBUS CORP"), "Head"),
+    weaponCreate("HC-2000 FINDER EYE", getCorpID("RAD"), "Head"),
+    weaponCreate("HC-2000/BC SHADE EYE", getCorpID("RAD"), "Head"),
+    weaponCreate("HC-3000 WRECKER", getCorpID("RAD"), "Head"),
+    weaponCreate("HS-5000 APPETIZER", getCorpID("RAD"), "Head"),
+    weaponCreate("EL-TH-10 FIRMEZA", getCorpID("ELCANO FOUNDRY"), "Head"),
+    weaponCreate("EL-PH-00 ALBA", getCorpID("ELCANO FOUNDRY"), "Head"),
+    weaponCreate("20-081 MIND ALPHA", getCorpID("ALLMIND"), "Head"),
+    weaponCreate("20-082 MIND BETA", getCorpID("ALLMIND"), "Head"),
+    weaponCreate(
+      "IA-C01H: EPHEMERA",
+      getCorpID("RUBICON RESEARCH INSTITUTE"),
+      "Head"
+    ),
+    weaponCreate(
+      "IB-C03H: HAL 826",
+      getCorpID("RUBICON RESEARCH INSTITUTE"),
+      "Head"
+    ),
+  ]);
+
+exports.bodyPartParams = [
+  weaponCreate("AH-J-120 BASHO", getCorpID("BAWS"), "Body"),
+  weaponCreate("AH-J-120/RC JAILBREAK", getCorpID("BAWS"), "Body"),
+  weaponCreate("BD-011 MELANDER", getCorpID("BALAM"), "Body"),
+  weaponCreate("BD-012 MELANDER C3", getCorpID("BALAM"), "Body"),
+  weaponCreate("DF-BD-08 TIAN-QIANG", getCorpID("DAFENG"), "Body"),
+  weaponCreate("VP-40S", getCorpID("ARQUEBUS CORP"), "Body"),
+  weaponCreate("NACHTREIHER/40E", getCorpID("SCHNEIDER"), "Body"),
+  weaponCreate("VE-40A", getCorpID("ARQUEBUS CORP"), "Body"),
+  weaponCreate("CC-2000 ORBITER", getCorpID("RAD"), "Body"),
+  weaponCreate("CC-3000 WRECKER", getCorpID("RAD"), "Body"),
+  weaponCreate("CS-5000 MAIN DISH", getCorpID("RAD"), "Body"),
+  weaponCreate("EL-TC-10 FIRMEZA", getCorpID("ELCANO FOUNDRY"), "Body"),
+  weaponCreate("EL-PC-00 ALBA", getCorpID("ELCANO FOUNDRY"), "Body"),
+  weaponCreate("07-061 MIND ALPHA", getCorpID("ALLMIND"), "Body"),
+  weaponCreate(
+    "IA-C01C: EPHMERA",
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Body"
+  ),
+  weaponCreate(
+    "IB-C03C: HAL 826",
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Body"
+  ),
 ];
 
-exports.headPartParams = [
-  ["AH-J-124 BASHO", Corporation.findOne({ name: "BAWS" }), "Head"],
-  ["AH-J-124/RC JAILBREAK", Corporation.findOne({ name: "BAWS" }), "Head"],
-  ["HD-011 MELANDER", Corporation.findOne({ name: "BALAM" }), "Head"],
-  ["HD-033M VERRILL", Corporation.findOne({ name: "BALAM" }), "Head"],
-  ["HD-012 MELANDER C3", Corporation.findOne({ name: "BALAM" }), "Head"],
-  ["DF-HD-08 TIAN-QIANG", Corporation.findOne({ name: "DAFENG" }), "Head"],
-  ["VP-44S", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Head"],
-  ["VP-44D", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Head"],
-  ["NACHTREIHER/44E", Corporation.findOne({ name: "SCHNEIDER" }), "Head"],
-  ["KASUAR/44Z", Corporation.findOne({ name: "SCHNEIDER" }), "Head"],
-  ["VE-44A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Head"],
-  ["VE-44B", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Head"],
-  ["HC-2000 FINDER EYE", Corporation.findOne({ name: "RAD" }), "Head"],
-  ["HC-2000/BC SHADE EYE", Corporation.findOne({ name: "RAD" }), "Head"],
-  ["HC-3000 WRECKER", Corporation.findOne({ name: "RAD" }), "Head"],
-  ["HS-5000 APPETIZER", Corporation.findOne({ name: "RAD" }), "Head"],
-  ["EL-TH-10 FIRMEZA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Head"],
-  ["EL-PH-00 ALBA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Head"],
-  ["20-081 MIND ALPHA", Corporation.findOne({ name: "ALLMIND" }), "Head"],
-  ["20-082 MIND BETA", Corporation.findOne({ name: "ALLMIND" }), "Head"],
-  [
-    "IA-C01H: EPHEMERA",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Head",
-  ],
-  [
-    "IB-C03H: HAL 826",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Head",
-  ],
-];
-exports.bodyPartParams = [
-  ["AH-J-120 BASHO", Corporation.findOne({ name: "BAWS" }), "Body"],
-  ["AH-J-120/RC JAILBREAK", Corporation.findOne({ name: "BAWS" }), "Body"],
-  ["BD-011 MELANDER", Corporation.findOne({ name: "BALAM" }), "Body"],
-  ["BD-012 MELANDER C3", Corporation.findOne({ name: "BALAM" }), "Body"],
-  ["DF-BD-08 TIAN-QIANG", Corporation.findOne({ name: "DAFENG" }), "Body"],
-  ["VP-40S", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Body"],
-  ["NACHTREIHER/40E", Corporation.findOne({ name: "SCHNEIDER" }), "Body"],
-  ["VE-40A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Body"],
-  ["CC-2000 ORBITER", Corporation.findOne({ name: "RAD" }), "Body"],
-  ["CC-3000 WRECKER", Corporation.findOne({ name: "RAD" }), "Body"],
-  ["CS-5000 MAIN DISH", Corporation.findOne({ name: "RAD" }), "Body"],
-  ["EL-TC-10 FIRMEZA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Body"],
-  ["EL-PC-00 ALBA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Body"],
-  ["07-061 MIND ALPHA", Corporation.findOne({ name: "ALLMIND" }), "Body"],
-  [
-    "IA-C01C: EPHMERA",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Body",
-  ],
-  [
-    "IB-C03C: HAL 826",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Body",
-  ],
-];
 exports.armsPartParams = [
-  ["AA-J-123 BASHO", Corporation.findOne({ name: "BAWS" }), "Arms"],
-  ["AA-J-123/RC JAILBREAK", Corporation.findOne({ name: "BAWS" }), "Arms"],
-  ["AR-011 MELANDER", Corporation.findOne({ name: "BALAM" }), "Arms"],
-  ["AR-012 MELANDER C3", Corporation.findOne({ name: "BALAM" }), "Arms"],
-  ["DF-AR-08 TIAN-QIANG", Corporation.findOne({ name: "DAFENG" }), "Arms"],
-  ["DF-AR-09 TIAN-LAO", Corporation.findOne({ name: "DAFENG" }), "Arms"],
-  ["VP-46S", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Arms"],
-  ["VP-46D", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Arms"],
-  ["NACHTREIHER/46E", Corporation.findOne({ name: "SCHNEIDER" }), "Arms"],
-  ["VE-46A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Arms"],
-  ["AC-2000 TOOL ARM", Corporation.findOne({ name: "RAD" }), "Arms"],
-  ["AC-3000 WRECKER", Corporation.findOne({ name: "RAD" }), "Arms"],
-  ["AS-5000 SALAD", Corporation.findOne({ name: "RAD" }), "Arms"],
-  ["EL-TA-10 FIRMEZA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Arms"],
-  ["EL-PA-00 ALBA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Arms"],
-  ["04-101 MIND ALPHA", Corporation.findOne({ name: "ALLMIND" }), "Arms"],
-  [
+  weaponCreate("AA-J-123 BASHO", getCorpID("BAWS"), "Arms"),
+  weaponCreate("AA-J-123/RC JAILBREAK", getCorpID("BAWS"), "Arms"),
+  weaponCreate("AR-011 MELANDER", getCorpID("BALAM"), "Arms"),
+  weaponCreate("AR-012 MELANDER C3", getCorpID("BALAM"), "Arms"),
+  weaponCreate("DF-AR-08 TIAN-QIANG", getCorpID("DAFENG"), "Arms"),
+  weaponCreate("DF-AR-09 TIAN-LAO", getCorpID("DAFENG"), "Arms"),
+  weaponCreate("VP-46S", getCorpID("ARQUEBUS CORP"), "Arms"),
+  weaponCreate("VP-46D", getCorpID("ARQUEBUS CORP"), "Arms"),
+  weaponCreate("NACHTREIHER/46E", getCorpID("SCHNEIDER"), "Arms"),
+  weaponCreate("VE-46A", getCorpID("ARQUEBUS CORP"), "Arms"),
+  weaponCreate("AC-2000 TOOL ARM", getCorpID("RAD"), "Arms"),
+  weaponCreate("AC-3000 WRECKER", getCorpID("RAD"), "Arms"),
+  weaponCreate("AS-5000 SALAD", getCorpID("RAD"), "Arms"),
+  weaponCreate("EL-TA-10 FIRMEZA", getCorpID("ELCANO FOUNDRY"), "Arms"),
+  weaponCreate("EL-PA-00 ALBA", getCorpID("ELCANO FOUNDRY"), "Arms"),
+  weaponCreate("04-101 MIND ALPHA", getCorpID("ALLMIND"), "Arms"),
+  weaponCreate(
     "IA-CO1A: EPHEMERA",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Arms",
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Arms"
+  ),
+  weaponCreate(
     "IB-C03A: HAL 826",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Arms",
-  ],
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Arms"
+  ),
 ];
+
 exports.legsPartParams = [
-  ["AL-J-121 BASHO", Corporation.findOne({ name: "BAWS" }), "Legs"],
-  ["AL-J-121/RC JAILBREAK", Corporation.findOne({ name: "BAWS" }), "Legs"],
-  ["LG-011 MELANDER", Corporation.findOne({ name: "BALAM" }), "Legs"],
-  ["LG-013 MELANDER C3", Corporation.findOne({ name: "BALAM" }), "Legs"],
-  ["DF-LG-08 TIAN-QIANG", Corporation.findOne({ name: "DAFENG" }), "Legs"],
-  ["VP-422", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Legs"],
-  ["NACHTREIHER/42E", Corporation.findOne({ name: "SCHNEIDER" }), "Legs"],
-  ["VE-42A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Legs"],
-  ["2C-2000 CRAWLER", Corporation.findOne({ name: "RAD" }), "Legs"],
-  ["2C-3000 WRECKER", Corporation.findOne({ name: "RAD" }), "Legs"],
-  ["2S-5000 DESSERT", Corporation.findOne({ name: "RAD" }), "Legs"],
-  ["EL-TL-10", Corporation.findOne({ name: "FIRMEZA" }), "Legs"],
-  ["EL-PL-00 ALBA", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Legs"],
-  ["06-041 MIND ALPHA", Corporation.findOne({ name: "ALLMIND" }), "Legs"],
-  [
+  weaponCreate("AL-J-121 BASHO", getCorpID("BAWS"), "Legs"),
+  weaponCreate("AL-J-121/RC JAILBREAK", getCorpID("BAWS"), "Legs"),
+  weaponCreate("LG-011 MELANDER", getCorpID("BALAM"), "Legs"),
+  weaponCreate("LG-013 MELANDER C3", getCorpID("BALAM"), "Legs"),
+  weaponCreate("DF-LG-08 TIAN-QIANG", getCorpID("DAFENG"), "Legs"),
+  weaponCreate("VP-422", getCorpID("ARQUEBUS CORP"), "Legs"),
+  weaponCreate("NACHTREIHER/42E", getCorpID("SCHNEIDER"), "Legs"),
+  weaponCreate("VE-42A", getCorpID("ARQUEBUS CORP"), "Legs"),
+  weaponCreate("2C-2000 CRAWLER", getCorpID("RAD"), "Legs"),
+  weaponCreate("2C-3000 WRECKER", getCorpID("RAD"), "Legs"),
+  weaponCreate("2S-5000 DESSERT", getCorpID("RAD"), "Legs"),
+  weaponCreate("EL-TL-10", getCorpID("FIRMEZA"), "Legs"),
+  weaponCreate("EL-PL-00 ALBA", getCorpID("ELCANO FOUNDRY"), "Legs"),
+  weaponCreate("06-041 MIND ALPHA", getCorpID("ALLMIND"), "Legs"),
+  weaponCreate(
     "IA-C01L: EPHEMERA",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Legs",
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Legs"
+  ),
+  weaponCreate(
     "IB-C03L: HAL 826",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Legs",
-  ],
-  ["KASUAR/42Z", Corporation.findOne({ name: "SCHNEIDER" }), "Legs"],
-  ["06-042 MIND BETA", Corporation.findOne({ name: "ALLMIND" }), "Legs"],
-  ["RC-2000 SPRING CHICKEN", Corporation.findOne({ name: "RAD" }), "Legs"],
-  ["LG-033M VERRILL", Corporation.findOne({ name: "BALAM" }), "Legs"],
-  ["VP-424", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Legs"],
-  ["LG-022T BORNEMISSZA", Corporation.findOne({ name: "BALAM" }), "Legs"],
-  ["VE-42B", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Legs"],
-  ["EL-TL-11", Corporation.findOne({ name: "ELCANO FOUNDRY" }), "Legs"],
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Legs"
+  ),
+  weaponCreate("KASUAR/42Z", getCorpID("SCHNEIDER"), "Legs"),
+  weaponCreate("06-042 MIND BETA", getCorpID("ALLMIND"), "Legs"),
+  weaponCreate("RC-2000 SPRING CHICKEN", getCorpID("RAD"), "Legs"),
+  weaponCreate("LG-033M VERRILL", getCorpID("BALAM"), "Legs"),
+  weaponCreate("VP-424", getCorpID("ARQUEBUS CORP"), "Legs"),
+  weaponCreate("LG-022T BORNEMISSZA", getCorpID("BALAM"), "Legs"),
+  weaponCreate("VE-42B", getCorpID("ARQUEBUS CORP"), "Legs"),
+  weaponCreate("EL-TL-11", getCorpID("ELCANO FOUNDRY"), "Legs"),
 ];
+
 exports.boosterPartParams = [
-  ["AB-J-137 KIKAKU", Corporation.findOne({ name: "BAWS" }), "Boosters"],
-  ["BST-G2/P04", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "Boosters"],
-  ["BST-G1/P10", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "Boosters"],
-  [
-    "BST-G2/P06SPD",
-    Corporation.findOne({ name: "FURLONG DYNAMICS" }),
-    "Boosters",
-  ],
-  ["ALULA/21E", Corporation.findOne({ name: "SCHNEIDER" }), "Boosters"],
-  ["FLUEGEL", Corporation.findOne({ name: "SCHNEIDER" }), "Boosters"],
-  ["BUERZEL/21D", Corporation.findOne({ name: "SCHNEIDER" }), "Boosters"],
-  ["BC-0600 12345", Corporation.findOne({ name: "RAD" }), "Boosters"],
-  ["BC-0400 MULE", Corporation.findOne({ name: "RAD" }), "Boosters"],
-  ["BC-0200 GRIDWALKER", Corporation.findOne({ name: "RAD" }), "Boosters"],
-  [
+  weaponCreate("AB-J-137 KIKAKU", getCorpID("BAWS"), "Boosters"),
+  weaponCreate("BST-G2/P04", getCorpID("FURLONG DYNAMICS"), "Boosters"),
+  weaponCreate("BST-G1/P10", getCorpID("FURLONG DYNAMICS"), "Boosters"),
+  weaponCreate("BST-G2/P06SPD", getCorpID("FURLONG DYNAMICS"), "Boosters"),
+  weaponCreate("ALULA/21E", getCorpID("SCHNEIDER"), "Boosters"),
+  weaponCreate("FLUEGEL", getCorpID("SCHNEIDER"), "Boosters"),
+  weaponCreate("BUERZEL/21D", getCorpID("SCHNEIDER"), "Boosters"),
+  weaponCreate("BC-0600 12345", getCorpID("RAD"), "Boosters"),
+  weaponCreate("BC-0400 MULE", getCorpID("RAD"), "Boosters"),
+  weaponCreate("BC-0200 GRIDWALKER", getCorpID("RAD"), "Boosters"),
+  weaponCreate(
     "IA-C01B: GILLS",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Boosters",
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Boosters"
+  ),
+  weaponCreate(
     "IB-C03B: NGI 001",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Boosters",
-  ],
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Boosters"
+  ),
 ];
+
 exports.fcsPartParams = [
-  ["FCS-G1/P01", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "FCS"],
-  ["FCS-G2/P05", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "FCS"],
-  ["FCS-G2/P10SLT", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "FCS"],
-  ["FCS-G2/P12SML", Corporation.findOne({ name: "FURLONG DYNAMICS" }), "FCS"],
-  ["FC-006 ABBOT", Corporation.findOne({ name: "BALAM" }), "FCS"],
-  ["FC-008 TALBOT", Corporation.findOne({ name: "BALAM" }), "FCS"],
-  ["VE-21A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "FCS"],
-  ["VE-21B", Corporation.findOne({ name: "ARQUEBUS CORP" }), "FCS"],
-  [
+  weaponCreate("FCS-G1/P01", getCorpID("FURLONG DYNAMICS"), "FCS"),
+  weaponCreate("FCS-G2/P05", getCorpID("FURLONG DYNAMICS"), "FCS"),
+  weaponCreate("FCS-G2/P10SLT", getCorpID("FURLONG DYNAMICS"), "FCS"),
+  weaponCreate("FCS-G2/P12SML", getCorpID("FURLONG DYNAMICS"), "FCS"),
+  weaponCreate("FC-006 ABBOT", getCorpID("BALAM"), "FCS"),
+  weaponCreate("FC-008 TALBOT", getCorpID("BALAM"), "FCS"),
+  weaponCreate("VE-21A", getCorpID("ARQUEBUS CORP"), "FCS"),
+  weaponCreate("VE-21B", getCorpID("ARQUEBUS CORP"), "FCS"),
+  weaponCreate(
     "IA-C01F: OCELLUS",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "FCS",
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "FCS"
+  ),
+  weaponCreate(
     "IB-C03F: WLT 001",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "FCS",
-  ],
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "FCS"
+  ),
 ];
+
 exports.generatorPartParams = [
-  ["AG-J-098 JOSO", Corporation.findOne({ name: "BAWS" }), "Generator"],
-  ["AG-E-013 YABA", Corporation.findOne({ name: "BAWS" }), "Generator"],
-  ["AG-T-005 HOKUSHI", Corporation.findOne({ name: "BAWS" }), "Generator"],
-  ["DF-GN-02 LING-TAI", Corporation.findOne({ name: "DAFENG" }), "Generator"],
-  ["DF-GN-06 MING-TANG", Corporation.findOne({ name: "DAFENG" }), "Generator"],
-  ["DF-GN-08 SAN-TAI", Corporation.findOne({ name: "DAFENG" }), "Generator"],
-  ["VP-20S", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  ["VP-20C", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  ["VP-20D", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  ["VE-20A", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  ["VE-20B", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  ["VE-20C", Corporation.findOne({ name: "ARQUEBUS CORP" }), "Generator"],
-  [
+  weaponCreate("AG-J-098 JOSO", getCorpID("BAWS"), "Generator"),
+  weaponCreate("AG-E-013 YABA", getCorpID("BAWS"), "Generator"),
+  weaponCreate("AG-T-005 HOKUSHI", getCorpID("BAWS"), "Generator"),
+  weaponCreate("DF-GN-02 LING-TAI", getCorpID("DAFENG"), "Generator"),
+  weaponCreate("DF-GN-06 MING-TANG", getCorpID("DAFENG"), "Generator"),
+  weaponCreate("DF-GN-08 SAN-TAI", getCorpID("DAFENG"), "Generator"),
+  weaponCreate("VP-20S", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate("VP-20C", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate("VP-20D", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate("VE-20A", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate("VE-20B", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate("VE-20C", getCorpID("ARQUEBUS CORP"), "Generator"),
+  weaponCreate(
     "IA-C01G: AORTA",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Generator",
-  ],
-  [
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Generator"
+  ),
+  weaponCreate(
     "IB-C03B: NGI 000",
-    Corporation.findOne({ name: "RUBICON RESEARCH INSTITUTE" }),
-    "Generator",
-  ],
+    getCorpID("RUBICON RESEARCH INSTITUTE"),
+    "Generator"
+  ),
 ];

@@ -105,12 +105,12 @@ const WeaponSchema = new Schema({
     enum: ["Overheat", "Single Shot", "Magazine"],
     required: true,
   },
-  additional_effects: { type: String, enum: ["None, Shock"], required: true },
+  additional_effects: { type: String, enum: ["None", "Shock", "ACS Failure", "Camera Disruption"], required: true },
   manufacturer: {
     type: Schema.Types.ObjectId,
     ref: "Corporation",
     required: true,
-  }
+  },
 });
 
 WeaponSchema.virtual("url").get(function () {
