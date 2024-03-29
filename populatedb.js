@@ -28,15 +28,7 @@ async function main() {
   console.log("Debug: Closing mongoose");
   mongoose.connection.close();
 }
-
-// async function getCorpID(name) {
-//   const corp = await Corporation.findOne({ name: name });
-//   return corp;
-// }
-
 const corpList = [];
-let weaponsList = [];
-let partsList = [];
 
 // We pass the index to the ...Create functions so that, for example,
 // corp[0] will always be the Company ARQUEBUS, regardless of the order
@@ -44,8 +36,6 @@ let partsList = [];
 async function corporationCreate(index, name) {
   const corp = new Corporation({
     name: name,
-    // weapons: await weaponsList.filter((doc) => doc.manufacturer.name === name),
-    // parts: await partsList.filter((doc) => doc.manufacturer.name === name),
   });
 
   corpList[index] = corp;
@@ -75,7 +65,12 @@ async function weaponCreate(
   };
 
   const weapon = new Weapon(weaponDetail);
-  weaponsList.push(weapon);
+
+  await Corporation.updateOne(
+    { name: weapon.manufacturer.name },
+    { $push: { weapons: weapon } },
+    { upsert: true }
+  );
 
   await weapon.save();
   console.log(`Added weapon: ${name}`);
@@ -89,7 +84,12 @@ async function partCreate(name, manufacturer, part_type) {
   };
 
   const part = new Part(partDetail);
-  partsList.push(part);
+
+  await Corporation.updateOne(
+    { name: part.manufacturer.name },
+    { $push: { parts: part } },
+    { upsert: true }
+  );
 
   await part.save();
   console.log(`Added part: ${name}`);
@@ -1161,28 +1161,6 @@ async function createWeapons() {
 async function createParts() {
   console.log("Adding parts");
   await Promise.all([
-    // params.headPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.bodyPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.armsPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.legsPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.boosterPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.fcsPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-    // params.generatorPartParams.forEach((arr) => {
-    //   partCreate(...arr);
-    // }),
-
     partCreate("AH-J-124 BASHO", corpList[3], "Head"),
     partCreate("AH-J-124/RC JAILBREAK", corpList[3], "Head"),
     partCreate("HD-011 MELANDER", corpList[2], "Head"),
