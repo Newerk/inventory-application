@@ -3,9 +3,10 @@ extends layout
 block content 
     h1= title
 
-    if weaponsArr.length    
-        ul 
-            each weapon in weaponsArr
+    if filteredWeapons.length
+        h2= subtitle
+        ul
+            each weapon in filteredWeapons
                 li 
                     a(href=weapon.url) #{weapon.name} 
         

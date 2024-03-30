@@ -12,7 +12,7 @@ module.exports = {
     parts_list: asyncHandler(async (req, res, next) => {
       const allParts = await Part.find().sort({ name: 1 }).exec();
   
-      res.render("part_detail", {
+      res.render("part_list", {
         title: "Parts",
         partsArr: allParts,
       });

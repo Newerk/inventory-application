@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const Weapon = require("../models/weapon");
 
 module.exports = {
   placeholder: asyncHandler(async (req, res, next) => {
@@ -12,9 +13,9 @@ module.exports = {
   weapons_list: asyncHandler(async (req, res, next) => {
     const allWeapons = await Weapon.find().sort({ name: 1 }).exec();
 
-    res.render("weapons_detail", {
+    res.render("weapons_list", {
       title: "Weapons",
-      weaponssArr: allWeapons,
+      weaponsArr: allWeapons,
     });
   }),
 
@@ -24,8 +25,9 @@ module.exports = {
       .sort({ name: 1 })
       .exec();
 
-    res.render("weapons_list", {
-      title: "Arm Weapons",
+    res.render("weapons_list_filtered", {
+      title: "Weapons",
+      subtitle: "Arm Weapons",
       filteredWeapons: armWeapons,
     });
   }),
@@ -36,8 +38,9 @@ module.exports = {
       .sort({ name: 1 })
       .exec();
 
-    res.render("weapons_list", {
-      title: "Back Weapons",
+    res.render("weapons_list_filtered", {
+      title: "Weapons",
+      subtitle: "Back Weapons",
       filteredWeapons: backWeapons,
     });
   }),
