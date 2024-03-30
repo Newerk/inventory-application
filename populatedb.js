@@ -10,7 +10,6 @@ const userArgs = process.argv.slice(2);
 const Corporation = require("./models/coporation");
 const Weapon = require("./models/weapon");
 const Part = require("./models/part");
-// const params = require("./DB_CREATE_PARAMS");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);

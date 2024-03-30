@@ -1,9 +1,19 @@
 extends layout 
 
 block content 
-    h1= title 
-    if corporations.length 
+    h1 Corporation: #{title} 
+
+    if weapons.length  
+        h2 Weapons
         ul 
-            each corp in corporations 
+            each weapon in weapons 
                 li
-                    a(href=corp.url) #{corp.name} 
+                    a(href=weapon.url) #{weapon.name} 
+    
+
+    if parts.length  
+        h2 Parts
+        ul 
+            each part in parts 
+                li
+                    a(href=part.url) #{part.name} 

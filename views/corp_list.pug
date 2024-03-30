@@ -1,4 +1,9 @@
 extends layout 
 
 block content 
-    h1= title
+    h1= title 
+    if corporations.length 
+        ul 
+            each corp in corporations 
+                li
+                    a(href=corp.url) #{corp.name} 

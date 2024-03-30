@@ -1,43 +1,43 @@
 const express = require("express");
 const router = express.Router();
-const Corporation = require("../controllers/corporationController");
-const Weapon = require("../controllers/weaponController");
-const Part = require("../controllers/partController");
+const corporation_controller = require("../controllers/corporationController");
+const weapon_controller = require("../controllers/weaponController");
+const part_controller = require("../controllers/partController");
 
 //CORPORATION ROUTES
-router.get("/corporations", Corporation.corp_list);
-router.get("/corporation/create", Corporation.placeholder);
-router.get("/corporation/:id", Corporation.placeholder);
-router.get("/corporation/:id/update", Corporation.placeholder);
-router.post("/corporation/:id/update", Corporation.placeholder);
-router.get("/corporation/:id/delete", Corporation.placeholder);
-router.post("/corporation/:id/delete", Corporation.placeholder);
+router.get("/corporations", corporation_controller.corp_list);
+router.get("/corporation/create", corporation_controller.placeholder);
+router.get("/corporation/:id", corporation_controller.corp_detail);
+router.get("/corporation/:id/update", corporation_controller.placeholder);
+router.post("/corporation/:id/update", corporation_controller.placeholder);
+router.get("/corporation/:id/delete", corporation_controller.placeholder);
+router.post("/corporation/:id/delete", corporation_controller.placeholder);
 
 //WEAPON ROUTES
-router.get("/weapons", Weapon.weapons_list);
-router.get("/weapons/arms", Weapon.weapons_arms);
-router.get("/weapons/back", Weapon.weapons_back);
-router.get("/weapon/create", Weapon.placeholder);
-router.get("/weapon/:id", Weapon.placeholder);
-router.get("/weapon/:id/update", Weapon.placeholder);
-router.post("/weapon/:id/update", Weapon.placeholder);
-router.get("/weapon/:id/delete", Weapon.placeholder);
-router.post("/weapon/:id/delete", Weapon.placeholder);
+router.get("/weapons", weapon_controller.weapons_list);
+router.get("/weapons/arms", weapon_controller.weapons_arms);
+router.get("/weapons/back", weapon_controller.weapons_back);
+router.get("/weapon/create", weapon_controller.placeholder);
+router.get("/weapon/:id", weapon_controller.placeholder);
+router.get("/weapon/:id/update", weapon_controller.placeholder);
+router.post("/weapon/:id/update", weapon_controller.placeholder);
+router.get("/weapon/:id/delete", weapon_controller.placeholder);
+router.post("/weapon/:id/delete", weapon_controller.placeholder);
 
 //PARTS ROUTES
-router.get("/parts", Part.parts_list);
-router.get("/parts/head", Part.placeholder);
-router.get("/parts/body", Part.placeholder);
-router.get("/parts/arms", Part.placeholder);
-router.get("/parts/legs", Part.placeholder);
-router.get("/parts/boosters", Part.placeholder);
-router.get("/parts/fcs", Part.placeholder);
-router.get("/parts/generators", Part.placeholder);
-router.get("/part/create", Part.placeholder);
-router.get("/part/:id", Part.placeholder);
-router.get("/part/:id/update", Part.placeholder);
-router.post("/part/:id/update", Part.placeholder);
-router.get("/part/:id/delete", Part.placeholder);
-router.post("/part/:id/delete", Part.placeholder);
+router.get("/parts", part_controller.parts_list);
+router.get("/parts/head", part_controller.placeholder);
+router.get("/parts/body", part_controller.placeholder);
+router.get("/parts/arms", part_controller.placeholder);
+router.get("/parts/legs", part_controller.placeholder);
+router.get("/parts/boosters", part_controller.placeholder);
+router.get("/parts/fcs", part_controller.placeholder);
+router.get("/parts/generators", part_controller.placeholder);
+router.get("/part/create", part_controller.placeholder);
+router.get("/part/:id", part_controller.placeholder);
+router.get("/part/:id/update", part_controller.placeholder);
+router.post("/part/:id/update", part_controller.placeholder);
+router.get("/part/:id/delete", part_controller.placeholder);
+router.post("/part/:id/delete", part_controller.placeholder);
 
 module.exports = router;
