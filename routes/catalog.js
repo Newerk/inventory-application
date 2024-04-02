@@ -26,13 +26,13 @@ router.post("/weapon/:id/delete", weapon_controller.placeholder);
 
 //PARTS ROUTES
 router.get("/parts", part_controller.parts_list);
-router.get("/parts/head", part_controller.placeholder);
-router.get("/parts/body", part_controller.placeholder);
-router.get("/parts/arms", part_controller.placeholder);
-router.get("/parts/legs", part_controller.placeholder);
-router.get("/parts/boosters", part_controller.placeholder);
-router.get("/parts/fcs", part_controller.placeholder);
-router.get("/parts/generators", part_controller.placeholder);
+router.get("/parts/head", part_controller.parts_head);
+router.get("/parts/body", part_controller.parts_body);
+router.get("/parts/arms", part_controller.parts_arms);
+router.get("/parts/legs", part_controller.parts_legs);
+router.get("/parts/boosters", part_controller.parts_boosters);
+router.get("/parts/fcs", part_controller.parts_fcs);
+router.get("/parts/generators", part_controller.parts_generator);
 router.get("/part/create", part_controller.placeholder);
 router.get("/part/:id", part_controller.placeholder);
 router.get("/part/:id/update", part_controller.placeholder);

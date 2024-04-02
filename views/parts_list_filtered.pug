@@ -3,9 +3,10 @@ extends layout
 block content 
     h1= title
 
-    if partsArr.length    
-        ul 
-            each part in partsArr
+    if filteredParts.length
+        h2= subtitle
+        ul
+            each part in filteredParts
                 li 
                     a(href=part.url) #{part.name} 
         
