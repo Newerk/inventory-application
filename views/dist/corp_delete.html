@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <div class="body-container">
+      <ul class="sidebar-nav">
+        <li><a href="/catalog">Home</a></li>
+        <li><a href="/catalog/corporations">All Corporations</a></li>
+        <li><a href="/catalog/weapons">All Weapons</a>
+          <ul> 
+            <li> <a href="/catalog/weapons/arms">Arm </a></li>
+            <li> <a href="/catalog/weapons/back">Back </a></li>
+          </ul>
+        </li>
+        <li><a href="/catalog/parts">All Parts </a>
+          <ul> 
+            <li> <a href="/catalog/parts/head">Head </a></li>
+            <li> <a href="/catalog/parts/body">Body </a></li>
+            <li> <a href="/catalog/parts/arms">Arms </a></li>
+            <li> <a href="/catalog/parts/legs">Legs </a></li>
+            <li> <a href="/catalog/parts/boosters">Boosters </a></li>
+            <li> <a href="/catalog/parts/fcs">FCS </a></li>
+            <li> <a href="/catalog/parts/generators">Generators </a></li>
+          </ul>
+        </li>
+        <li><a href="/catalog/corporation/create">Create Corporation</a></li>
+        <li><a href="/catalog/weapon/create">Create Weapon</a></li>
+        <li><a href="/catalog/part/create">Create Part</a></li>
+      </ul>
+      <div class="content-container">
+        <h1></h1>
+        <h2>Total Weapons: , Total Parts: </h2>
+        <div>
+          <p class="warning">Are you sure you want to delete this corporation?</p>
+        </div>
+        <form method="post"> 
+          <button type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

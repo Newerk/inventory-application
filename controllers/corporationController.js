@@ -3,6 +3,7 @@ const Corporation = require("../models/coporation");
 const Weapon = require("../models/weapon");
 const Part = require("../models/part");
 const { body, validationResult } = require("express-validator");
+const express = require("express");
 
 module.exports = {
   placeholder: asyncHandler(async (req, res) => {
@@ -111,6 +112,24 @@ module.exports = {
     }),
   ],
 
-  corp_delete_get: asyncHandler(async (req, res) => {}),
-  corp_delete_post: asyncHandler(async (req, res) => {}),
+  corp_delete_get: asyncHandler(async (req, res) => {
+    const corp = await Corporation.findById(req.params.id)
+      .populate("weapons")
+      .populate("parts")
+      .exec();
+
+    res.render("corp_delete", {
+      title: corp.name,
+      totalWeapons: corp.weapons.length,
+      totalParts: corp.parts.length,
+      corp: corp,
+    });
+  }),
+
+  corp_delete_post: [
+    asyncHandler(async (req, res) => {
+      await Corporation.findByIdAndDelete(req.params.id);
+      res.redirect("/catalog/corporations");
+    }),
+  ],
 };
