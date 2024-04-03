@@ -9,8 +9,8 @@ router.get("/corporations", corporation_controller.corp_list);
 router.get("/corporation/create", corporation_controller.corp_create_get);
 router.post("/corporation/create", corporation_controller.corp_create_post);
 router.get("/corporation/:id", corporation_controller.corp_detail);
-router.get("/corporation/:id/update", corporation_controller.placeholder);
-router.post("/corporation/:id/update", corporation_controller.placeholder);
+router.get("/corporation/:id/update", corporation_controller.corp_update_get);
+router.post("/corporation/:id/update", corporation_controller.corp_update_post);
 router.get("/corporation/:id/delete", corporation_controller.placeholder);
 router.post("/corporation/:id/delete", corporation_controller.placeholder);
 

@@ -33,6 +33,7 @@ module.exports = {
       title: corp.name,
       weapons: corp.weapons,
       parts: corp.parts,
+      corp: corp,
     });
   }),
 
@@ -69,4 +70,47 @@ module.exports = {
       }
     }),
   ],
+
+  corp_update_get: asyncHandler(async (req, res) => {
+    const corp = await Corporation.findById(req.params.id)
+      .populate("weapons")
+      .populate("parts")
+      .exec();
+
+    res.render("corp_update", {
+      title: "Update Corporation",
+      initialName: corp.name,
+    });
+  }),
+
+  corp_update_post: [
+    body("corp_name")
+      .toUpperCase()
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Name cannot be blank"),
+
+    asyncHandler(async (req, res) => {
+      const errors = validationResult(req);
+      const corp = await Corporation.findById(req.params.id).exec();
+
+      if (!errors.isEmpty()) {
+        res.render("corp_update", {
+          title: "Update Corporation",
+          initialName: corp.name,
+          errors: errors.array(),
+        });
+      } else {
+        const corp = await Corporation.findByIdAndUpdate(req.params.id, {
+          name: req.body.corp_name,
+        }).exec();
+
+        await corp.save();
+        res.redirect(corp.url);
+      }
+    }),
+  ],
+
+  corp_delete_get: asyncHandler(async (req, res) => {}),
+  corp_delete_post: asyncHandler(async (req, res) => {}),
 };
