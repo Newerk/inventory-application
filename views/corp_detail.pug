@@ -3,17 +3,24 @@ extends layout
 block content 
     h1 Corporation: #{title} 
 
-    if weapons.length  
-        h2 Weapons
-        ul 
-            each weapon in weapons 
-                li
-                    a(href=weapon.url) #{weapon.name} 
+    if !weapons.length && !parts.length
+        h2 This Company has no weapons or parts
+    else
+        if weapons.length  
+            h2 Weapons
+            ul 
+                each weapon in weapons 
+                    li
+                        a(href=weapon.url) #{weapon.name} 
+        else
+            h2 This Corporations has no weapons
+        
     
-
-    if parts.length  
-        h2 Parts
-        ul 
-            each part in parts 
-                li
-                    a(href=part.url) #{part.name} 
+        if parts.length  
+            h2 Parts
+            ul 
+                each part in parts 
+                    li
+                        a(href=part.url) #{part.name} 
+        else
+            h2 This Corporations has no parts

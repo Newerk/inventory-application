@@ -2,3 +2,13 @@ extends layout
 
 block content 
     h1= title
+
+    form(method="post") 
+        label(for="corp_name") Corporation Name: 
+        input#corp_name(type="text", name="corp_name") 
+        button(type="submit") Save Corporation
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
