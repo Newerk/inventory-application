@@ -4,7 +4,7 @@ block content
     h1 Corporation: #{title} 
 
     if !weapons.length && !parts.length
-        h2 This Company has no weapons or parts
+        h2 This corporation has no weapons or parts
     else
         if weapons.length  
             h2 Weapons
@@ -13,9 +13,9 @@ block content
                     li
                         a(href=weapon.url) #{weapon.name} 
         else
-            h2 This Corporations has no weapons
-        
-    
+            h2 This corporation has no weapons
+
+
         if parts.length  
             h2 Parts
             ul 
@@ -23,4 +23,4 @@ block content
                     li
                         a(href=part.url) #{part.name} 
         else
-            h2 This Corporations has no parts
+            h2 This corporation has no parts
