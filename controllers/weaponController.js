@@ -44,4 +44,13 @@ module.exports = {
       filteredWeapons: backWeapons,
     });
   }),
+
+  weapon_detail: asyncHandler(async (req, res) => {
+    const weapon = await Weapon.findById(req.params.id).exec();
+
+    res.render("weapon_detail", {
+      title: weapon.name,
+      weapon: weapon,
+    });
+  }),
 };

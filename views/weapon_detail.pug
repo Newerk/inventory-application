@@ -2,8 +2,10 @@ extends layout
 
 block content 
     h1= title 
-    if weaponsArr.length 
-        ul 
-            each weapon in weaponsArr 
-                li
-                    a(href=weapon.url) #{weapon.name} 
+    h2 Details 
+    p Category: #{weapon.attached_to}
+    p Part Class: #{weapon.part_class}
+    p Attack Type: #{weapon.attack_type}
+    p Weapon Type: #{weapon.weapon_type}
+    p Reload Type: #{weapon.reload_type}
+    p Additional Effects: #{weapon.additional_effects}
