@@ -117,4 +117,12 @@ WeaponSchema.virtual("url").get(function () {
   return `/catalog/weapon/${this._id}`;
 });
 
+WeaponSchema.virtual("partClassEnum").get(function () {
+
+  this.part_class.
+
+  return ;
+});
+
+
 module.exports = mongoose.model("Weapon", WeaponSchema);

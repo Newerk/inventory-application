@@ -128,5 +128,52 @@ module.exports = {
         }
       }
     });
+  }),
+  weapon_update_get: asyncHandler(function _callee6(req, res) {
+    var attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, weapon;
+    return regeneratorRuntime.async(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
+            partClassEnumArr = Weapon.schema.path("part_class").enumValues; //seperate into seperate lists for arms and back??? it would be more accurate to the game
+
+            attackTypeEnumArr = Weapon.schema.path("attack_type").enumValues;
+            weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
+            reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
+            additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
+            _context6.next = 8;
+            return regeneratorRuntime.awrap(Weapon.findById(req.params.id).exec());
+
+          case 8:
+            weapon = _context6.sent;
+            res.render("weapon_update", {
+              title: "Update Weapon",
+              weapon: weapon,
+              attachedToOptions: attachedToEnumArr,
+              partClassOptions: partClassEnumArr,
+              attackTypeOptions: attackTypeEnumArr,
+              weaponTypeOptions: weaponTypeEnumArr,
+              reloadTypeOptions: reloadTypeEnumArr,
+              addtionalEffectsOptions: additionalEffeectsEnumArr
+            });
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    });
+  }),
+  weapon_update_post: asyncHandler(function _callee7(req, res) {
+    return regeneratorRuntime.async(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    });
   })
 };
