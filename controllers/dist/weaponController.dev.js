@@ -231,5 +231,68 @@ module.exports = {
         }
       }
     });
-  })]
+  })],
+  weapon_create_get: asyncHandler(function _callee8(req, res) {
+    return regeneratorRuntime.async(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    });
+  }),
+  weapon_create_post: asyncHandler(function _callee9(req, res) {
+    return regeneratorRuntime.async(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    });
+  }),
+  weapon_delete_get: asyncHandler(function _callee10(req, res) {
+    var weapon;
+    return regeneratorRuntime.async(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            _context10.next = 2;
+            return regeneratorRuntime.awrap(Weapon.findById(req.params.id).exec());
+
+          case 2:
+            weapon = _context10.sent;
+            res.render("weapon_delete", {
+              title: weapon.name,
+              weapon: weapon
+            });
+
+          case 4:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    });
+  }),
+  weapon_delete_post: asyncHandler(function _callee11(req, res) {
+    return regeneratorRuntime.async(function _callee11$(_context11) {
+      while (1) {
+        switch (_context11.prev = _context11.next) {
+          case 0:
+            _context11.next = 2;
+            return regeneratorRuntime.awrap(Weapon.findByIdAndDelete(req.params.id).exec());
+
+          case 2:
+            res.redirect("/catalog/weapons");
+
+          case 3:
+          case "end":
+            return _context11.stop();
+        }
+      }
+    });
+  })
 };

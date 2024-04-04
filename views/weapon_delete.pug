@@ -2,3 +2,16 @@ extends layout
 
 block content 
     h1= title
+    h2 Details 
+    p Category: #{weapon.attached_to}
+    p Part Class: #{weapon.part_class}
+    p Attack Type: #{weapon.attack_type}
+    p Weapon Type: #{weapon.weapon_type}
+    p Reload Type: #{weapon.reload_type}
+    p Additional Effects: #{weapon.additional_effects}
+
+    div
+        p.warning Are you sure you want to delete this corporation?
+    form(method="post") 
+        input(type='hidden', name='weaponid', value=weapon._id )
+        button(type="submit") Yes

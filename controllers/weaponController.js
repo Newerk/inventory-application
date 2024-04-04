@@ -124,4 +124,21 @@ module.exports = {
       }
     }),
   ],
+
+  weapon_create_get: asyncHandler(async (req, res) => {}),
+
+  weapon_create_post: asyncHandler(async (req, res) => {}),
+
+  weapon_delete_get: asyncHandler(async (req, res) => {
+    const weapon = await Weapon.findById(req.params.id).exec();
+
+    res.render("weapon_delete", {
+      title: weapon.name,
+      weapon: weapon,
+    });
+  }),
+  weapon_delete_post: asyncHandler(async (req, res) => {
+    await Weapon.findByIdAndDelete(req.params.id).exec();
+    res.redirect("/catalog/weapons");
+  }),
 };
