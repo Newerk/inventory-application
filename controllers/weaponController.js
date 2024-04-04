@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Weapon = require("../models/weapon");
+const { body, validationResult } = require("express-validator");
 
 module.exports = {
   placeholder: asyncHandler(async (req, res, next) => {
@@ -77,5 +78,50 @@ module.exports = {
     });
   }),
 
-  weapon_update_post: asyncHandler(async (req, res) => {}),
+  weapon_update_post: [
+    body("weapon_name")
+      .toUpperCase()
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Name cannot be blank"),
+
+    asyncHandler(async (req, res) => {
+      const errors = validationResult(req);
+
+      const attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
+      const partClassEnumArr = Weapon.schema.path("part_class").enumValues; //seperate into seperate lists for arms and back??? it would be more accurate to the game
+      const attackTypeEnumArr = Weapon.schema.path("attack_type").enumValues;
+      const weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
+      const reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
+      const additionalEffeectsEnumArr =
+        Weapon.schema.path("additional_effects").enumValues;
+
+      const weapon = await Weapon.findById(req.params.id).exec();
+
+      if (!errors.isEmpty()) {
+        res.render("weapon_update", {
+          title: "Update Weapon",
+          weapon: weapon,
+          attachedToOptions: attachedToEnumArr,
+          partClassOptions: partClassEnumArr,
+          attackTypeOptions: attackTypeEnumArr,
+          weaponTypeOptions: weaponTypeEnumArr,
+          reloadTypeOptions: reloadTypeEnumArr,
+          addtionalEffectsOptions: additionalEffeectsEnumArr,
+          errors: errors.array(),
+        });
+      } else {
+        await Weapon.findByIdAndUpdate(req.params.id, {
+          name: req.body.weapon_name,
+          attached_to: req.body.attached_to_drop,
+          part_class: req.body.part_class_drop,
+          attack_type: req.body.attack_type_drop,
+          weapon_type: req.body.weapon_type_drop,
+          reload_type: req.body.reload_type_drop,
+          additional_effects: req.body.additional_effects_drop,
+        });
+        res.redirect(weapon.url);
+      }
+    }),
+  ],
 };

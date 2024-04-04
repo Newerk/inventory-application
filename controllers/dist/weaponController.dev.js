@@ -4,6 +4,10 @@ var asyncHandler = require("express-async-handler");
 
 var Weapon = require("../models/weapon");
 
+var _require = require("express-validator"),
+    body = _require.body,
+    validationResult = _require.validationResult;
+
 module.exports = {
   placeholder: asyncHandler(function _callee(req, res, next) {
     return regeneratorRuntime.async(function _callee$(_context) {
@@ -165,15 +169,67 @@ module.exports = {
       }
     });
   }),
-  weapon_update_post: asyncHandler(function _callee7(req, res) {
+  weapon_update_post: [body("weapon_name").toUpperCase().trim().isLength({
+    min: 1
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee7(req, res) {
+    var errors, attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, weapon;
     return regeneratorRuntime.async(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
+            errors = validationResult(req);
+            attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
+            partClassEnumArr = Weapon.schema.path("part_class").enumValues; //seperate into seperate lists for arms and back??? it would be more accurate to the game
+
+            attackTypeEnumArr = Weapon.schema.path("attack_type").enumValues;
+            weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
+            reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
+            additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
+            _context7.next = 9;
+            return regeneratorRuntime.awrap(Weapon.findById(req.params.id).exec());
+
+          case 9:
+            weapon = _context7.sent;
+
+            if (errors.isEmpty()) {
+              _context7.next = 14;
+              break;
+            }
+
+            res.render("weapon_update", {
+              title: "Update Weapon",
+              weapon: weapon,
+              attachedToOptions: attachedToEnumArr,
+              partClassOptions: partClassEnumArr,
+              attackTypeOptions: attackTypeEnumArr,
+              weaponTypeOptions: weaponTypeEnumArr,
+              reloadTypeOptions: reloadTypeEnumArr,
+              addtionalEffectsOptions: additionalEffeectsEnumArr,
+              errors: errors.array()
+            });
+            _context7.next = 17;
+            break;
+
+          case 14:
+            _context7.next = 16;
+            return regeneratorRuntime.awrap(Weapon.findByIdAndUpdate(req.params.id, {
+              name: req.body.weapon_name,
+              attached_to: req.body.attached_to_drop,
+              part_class: req.body.part_class_drop,
+              attack_type: req.body.attack_type_drop,
+              weapon_type: req.body.weapon_type_drop,
+              reload_type: req.body.reload_type_drop,
+              additional_effects: req.body.additional_effects_drop
+            }));
+
+          case 16:
+            res.redirect(weapon.url);
+
+          case 17:
           case "end":
             return _context7.stop();
         }
       }
     });
-  })
+  })]
 };

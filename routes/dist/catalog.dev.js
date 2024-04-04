@@ -26,7 +26,7 @@ router.get("/weapons/back", weapon_controller.weapons_back);
 router.get("/weapon/create", weapon_controller.placeholder);
 router.get("/weapon/:id", weapon_controller.weapon_detail);
 router.get("/weapon/:id/update", weapon_controller.weapon_update_get);
-router.post("/weapon/:id/update", weapon_controller.placeholder);
+router.post("/weapon/:id/update", weapon_controller.weapon_update_post);
 router.get("/weapon/:id/delete", weapon_controller.placeholder);
 router.post("/weapon/:id/delete", weapon_controller.placeholder); //PARTS ROUTES
 

@@ -9,7 +9,7 @@ block content
 
 
         label(for="attached_to") Attached To: 
-        select#attached-to-drop(name="attached-to")
+        select#attached_to_drop(name="attached-to")
             each choice in attachedToOptions
                 if choice ===  weapon.attached_to
                     option(value=choice selected="selected") #{choice}
@@ -17,7 +17,7 @@ block content
                     option(value=choice) #{choice}  
 
         label(for="parts-class") Parts Class: 
-        select#part-class-drop(name="parts-class")
+        select#part_class_drop(name="parts-class")
             each choice in partClassOptions 
                 if choice ===  weapon.part_class
                     option(value=choice selected="selected") #{choice}
@@ -25,7 +25,7 @@ block content
                     option(value=choice) #{choice}  
 
         label(for="attack-type") Attack Type: 
-        select#attack-type-drop(name="attack-type")
+        select#attack_type_drop(name="attack-type")
             each choice in attackTypeOptions 
                 if choice ===  weapon.attack_type
                     option(value=choice selected="selected") #{choice}
@@ -33,7 +33,7 @@ block content
                     option(value=choice) #{choice}  
 
         label(for="weapon-type") Weapon Type: 
-        select#weapon-type-drop(name="weapon-type")
+        select#weapon_type_drop(name="weapon-type")
             each choice in weaponTypeOptions 
                 if choice ===  weapon.weapon_type
                     option(value=choice selected="selected") #{choice}
@@ -41,7 +41,7 @@ block content
                     option(value=choice) #{choice}  
 
         label(for="reload-type") Reload Type: 
-        select#reload-type-drop(name="reload-type")
+        select#reload_type_drop(name="reload-type")
             each choice in reloadTypeOptions 
                 if choice ===  weapon.reload_type
                     option(value=choice selected="selected") #{choice}
@@ -49,7 +49,7 @@ block content
                     option(value=choice) #{choice}  
 
         label(for="additional-effects") Additional Effects: 
-        select#additional-effects-drop(name="additional-effects")
+        select#additional_effects_drop(name="additional-effects")
             each choice in addtionalEffectsOptions 
                 if choice ===  weapon.additional_effects
                     option(value=choice selected="selected") #{choice}
