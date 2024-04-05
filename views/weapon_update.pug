@@ -56,6 +56,15 @@ block content
                 else 
                     option(value=choice) #{choice}  
 
+        label(for="manufacturer") Manufacturer: 
+        select#manufacturers_drop(name="manufacturer")
+            each choice in manufacturerOptions 
+                if choice ===  weapon.manufacturer.name
+                    option(value=choice.name selected="selected") #{choice.name}
+                else 
+                    option(value=choice.name) #{choice.name}  
+
+
 
         button(type="submit") Save Changes
 

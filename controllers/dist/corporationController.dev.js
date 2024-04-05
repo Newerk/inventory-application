@@ -237,22 +237,62 @@ module.exports = {
       }
     });
   }),
-  corp_delete_post: [asyncHandler(function _callee9(req, res) {
-    return regeneratorRuntime.async(function _callee9$(_context9) {
+  corp_delete_post: asyncHandler(function _callee11(req, res) {
+    var corp;
+    return regeneratorRuntime.async(function _callee11$(_context11) {
       while (1) {
-        switch (_context9.prev = _context9.next) {
+        switch (_context11.prev = _context11.next) {
           case 0:
-            _context9.next = 2;
-            return regeneratorRuntime.awrap(Corporation.findByIdAndDelete(req.params.id));
+            _context11.next = 2;
+            return regeneratorRuntime.awrap(Corporation.findById(req.params.id).populate("weapons").populate("parts").exec());
 
           case 2:
+            corp = _context11.sent;
+            corp.weapons.forEach(function _callee9(weapon) {
+              return regeneratorRuntime.async(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      _context9.next = 2;
+                      return regeneratorRuntime.awrap(Weapon.findOneAndDelete({
+                        name: weapon.name
+                      }));
+
+                    case 2:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              });
+            });
+            corp.parts.forEach(function _callee10(part) {
+              return regeneratorRuntime.async(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      _context10.next = 2;
+                      return regeneratorRuntime.awrap(Part.findOneAndDelete({
+                        name: part.name
+                      }));
+
+                    case 2:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              });
+            });
+            _context11.next = 7;
+            return regeneratorRuntime.awrap(Corporation.findByIdAndDelete(req.params.id));
+
+          case 7:
             res.redirect("/catalog/corporations");
 
-          case 3:
+          case 8:
           case "end":
-            return _context9.stop();
+            return _context11.stop();
         }
       }
     });
-  })]
+  })
 };

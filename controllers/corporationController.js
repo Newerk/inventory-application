@@ -126,10 +126,21 @@ module.exports = {
     });
   }),
 
-  corp_delete_post: [
-    asyncHandler(async (req, res) => {
-      await Corporation.findByIdAndDelete(req.params.id);
-      res.redirect("/catalog/corporations");
-    }),
-  ],
+  corp_delete_post: asyncHandler(async (req, res) => {
+    const corp = await Corporation.findById(req.params.id)
+      .populate("weapons")
+      .populate("parts")
+      .exec();
+
+    corp.weapons.forEach(async (weapon) => {
+      await Weapon.findOneAndDelete({ name: weapon.name });
+    });
+
+    corp.parts.forEach(async (part) => {
+      await Part.findOneAndDelete({ name: part.name });
+    });
+
+    await Corporation.findByIdAndDelete(req.params.id);
+    res.redirect("/catalog/corporations");
+  }),
 };

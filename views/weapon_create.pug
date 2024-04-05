@@ -2,3 +2,52 @@ extends layout
 
 block content 
     h1= title
+
+    form(method="post") 
+        label(for="weapon_name") Weapon Name: 
+        input#weapon_name(type="text", name="weapon_name") 
+
+
+        label(for="attached_to") Attached To: 
+        select#attached_to_drop(name="attached_to")
+            each choice in attachedToOptions
+                option(value=choice) #{choice}  
+
+        label(for="part_class") Part Class: 
+        select#part_class_drop(name="part_class")
+            each choice in partClassOptions 
+                option(value=choice) #{choice}  
+
+        label(for="attack_type") Attack Type: 
+        select#attack_type_drop(name="attack_type")
+            each choice in attackTypeOptions 
+                option(value=choice) #{choice}  
+
+        label(for="weapon_type") Weapon Type: 
+        select#weapon_type_drop(name="weapon_type")
+            each choice in weaponTypeOptions 
+                option(value=choice) #{choice}  
+
+        label(for="reload_type") Reload Type: 
+        select#reload_type_drop(name="reload_type")
+            each choice in reloadTypeOptions 
+                option(value=choice) #{choice}  
+
+        label(for="additional_effects") Additional Effects: 
+        select#additional_effects_drop(name="additional_effects")
+            each choice in addtionalEffectsOptions 
+                option(value=choice) #{choice}  
+
+        label(for="manufacturer") Manufacturer: 
+        select#manufacturers_drop(name="manufacturer")
+            each choice in manufacturerOptions 
+                option(value=choice.name) #{choice.name}  
+
+
+
+        button(type="submit") Create Weapon
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
