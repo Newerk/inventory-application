@@ -5,8 +5,11 @@ block content
 
     form(method="post") 
         label(for="corp_name") Corporation Name: 
-        input#corp_name(type="text", name="corp_name", value=initialName) 
+        input#corp_name(type="text", name="corp_name", value=corp.name) 
         button(type="submit") Save Changes
+        
+        form(action="/catalog/corporation/" + corp._id, method="get")
+            button(type="submit") Cancel Changes
 
     if errors
         ul

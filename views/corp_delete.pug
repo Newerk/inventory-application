@@ -8,5 +8,7 @@ block content
         p.warning Are you sure you want to delete this corporation? All weapons 
         |and parts belonging to them will also be deleted
     form(method="post") 
-        input(type='hidden', name='corpid', value=corp._id )
         button(type="submit") Yes
+        
+        form(action="/catalog/corporation/" + corp._id, method="get")
+            button(type="submit") No

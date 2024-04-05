@@ -80,7 +80,7 @@ module.exports = {
 
     res.render("corp_update", {
       title: "Update Corporation",
-      initialName: corp.name,
+      corp: corp,
     });
   }),
 

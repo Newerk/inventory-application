@@ -152,7 +152,7 @@ module.exports = {
             corp = _context6.sent;
             res.render("corp_update", {
               title: "Update Corporation",
-              initialName: corp.name
+              corp: corp
             });
 
           case 4:
