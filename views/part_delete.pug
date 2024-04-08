@@ -1,4 +1,16 @@
 extends layout 
 
 block content 
-    h1= title
+    h1= part.name
+    h2 Details:     
+    p Part Type: #{part.part_type}
+    p Manufacturer: #{part.manufacturer.name}
+
+    div
+        p.warning Are you sure you want to delete this part?
+    form(method="post") 
+        input(type='hidden', name='partid', value=part._id )
+        button(type="submit") Yes
+
+    //- form(action=`/catalog/part/${part._id}`, method="get")
+    //-     button(type="submit") No

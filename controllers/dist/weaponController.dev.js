@@ -278,7 +278,7 @@ module.exports = {
           case 8:
             allCorps = _context8.sent;
             res.render("weapon_create", {
-              title: "Create Weapon",
+              title: "Create New Weapon",
               attachedToOptions: attachedToEnumArr,
               partClassOptions: partClassEnumArr,
               attackTypeOptions: attackTypeEnumArr,
@@ -338,14 +338,15 @@ module.exports = {
             }
 
             res.render("weapon_create", {
-              title: "Create Weapon",
+              title: "Create New Weapon",
               attachedToOptions: attachedToEnumArr,
               partClassOptions: partClassEnumArr,
               attackTypeOptions: attackTypeEnumArr,
               weaponTypeOptions: weaponTypeEnumArr,
               reloadTypeOptions: reloadTypeEnumArr,
               addtionalEffectsOptions: additionalEffeectsEnumArr,
-              manufacturerOptions: allCorps
+              manufacturerOptions: allCorps,
+              errors: errors.array()
             });
             _context9.next = 21;
             break;

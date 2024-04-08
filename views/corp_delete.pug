@@ -9,6 +9,7 @@ block content
         |and parts belonging to them will also be deleted
     form(method="post") 
         button(type="submit") Yes
-        
-        form(action="/catalog/corporation/" + corp._id, method="get")
-            button(type="submit") No
+
+    form(action=`/catalog/corporation/${corp._id}`, method="get")
+        button(type="submit") No
+

@@ -35,12 +35,12 @@ router.get("/parts/legs", part_controller.parts_legs);
 router.get("/parts/boosters", part_controller.parts_boosters);
 router.get("/parts/fcs", part_controller.parts_fcs);
 router.get("/parts/generators", part_controller.parts_generator);
-router.get("/part/create", part_controller.placeholder);
-router.post("/part/create", part_controller.placeholder);
-router.get("/part/:id", part_controller.placeholder);
+router.get("/part/create", part_controller.part_create_get);
+router.post("/part/create", part_controller.part_create_post);
+router.get("/part/:id", part_controller.parts_detail);
 router.get("/part/:id/update", part_controller.placeholder);
 router.post("/part/:id/update", part_controller.placeholder);
-router.get("/part/:id/delete", part_controller.placeholder);
-router.post("/part/:id/delete", part_controller.placeholder);
+router.get("/part/:id/delete", part_controller.part_delete_get);
+router.post("/part/:id/delete", part_controller.part_delete_post);
 
 module.exports = router;

@@ -2,3 +2,25 @@ extends layout
 
 block content 
     h1= title
+
+    form(method="post") 
+        label(for="part_name") Part Name: 
+        input#part_name(type="text", name="part_name") 
+
+        label(for="part_type") Part Type: 
+        select#part_type_drop(name="part_type")
+            each choice in partTypeOptions 
+                option(value=choice) #{choice}  
+
+        label(for="manufacturer") Manufacturer: 
+        select#manufacturers_drop(name="manufacturer")
+            each choice in manufacturerOptions 
+                option(value=choice.name) #{choice.name}  
+
+
+        button(type="submit") Create Part
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

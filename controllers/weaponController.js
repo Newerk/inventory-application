@@ -148,7 +148,7 @@ module.exports = {
     const allCorps = await Corporation.find().sort({ name: 1 }).exec();
 
     res.render("weapon_create", {
-      title: "Create Weapon",
+      title: "Create New Weapon",
       attachedToOptions: attachedToEnumArr,
       partClassOptions: partClassEnumArr,
       attackTypeOptions: attackTypeEnumArr,
@@ -196,7 +196,7 @@ module.exports = {
 
       if (!errors.isEmpty()) {
         res.render("weapon_create", {
-          title: "Create Weapon",
+          title: "Create New Weapon",
           attachedToOptions: attachedToEnumArr,
           partClassOptions: partClassEnumArr,
           attackTypeOptions: attackTypeEnumArr,
@@ -204,6 +204,7 @@ module.exports = {
           reloadTypeOptions: reloadTypeEnumArr,
           addtionalEffectsOptions: additionalEffeectsEnumArr,
           manufacturerOptions: allCorps,
+          errors: errors.array(),
         });
       } else {
         await Corporation.findByIdAndUpdate(manufacturer._id, {
