@@ -10,6 +10,6 @@ block content
     form(method="post") 
         button(type="submit") Yes
 
-    form(action=`/catalog/corporation/${corp._id}`, method="get")
+    form(action=corp.url, method="get")
         button(type="submit") No
 

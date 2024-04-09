@@ -11,6 +11,5 @@ block content
     form(method="post") 
         input(type='hidden', name='partid', value=part._id )
         button(type="submit") Yes
-
-    //- form(action=`/catalog/part/${part._id}`, method="get")
-    //-     button(type="submit") No
+    form(action=part.url, method="get")
+        button(type="submit") No

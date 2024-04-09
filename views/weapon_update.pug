@@ -67,6 +67,9 @@ block content
 
 
         button(type="submit") Save Changes
+        form(action=weapon.url, method="get")
+            button(type="submit") Cancel Changes
+
 
     if errors
         ul

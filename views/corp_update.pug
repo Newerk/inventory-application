@@ -8,7 +8,7 @@ block content
         input#corp_name(type="text", name="corp_name", value=corp.name) 
         button(type="submit") Save Changes
 
-        form(action=`/catalog/corporation/${corp._id}`, method="get")
+        form(action=corp.url, method="get")
             button(type="submit") Cancel Changes
 
     if errors

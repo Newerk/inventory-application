@@ -141,6 +141,7 @@ module.exports = {
     });
 
     await Corporation.findByIdAndDelete(req.params.id);
+    
     res.redirect("/catalog/corporations");
   }),
 };
