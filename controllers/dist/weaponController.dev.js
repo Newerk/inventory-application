@@ -158,7 +158,7 @@ module.exports = {
             reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
             additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
             _context6.next = 8;
-            return regeneratorRuntime.awrap(Promise.all([Weapon.findById(req.params.id).exec(), Corporation.find().sort({
+            return regeneratorRuntime.awrap(Promise.all([Weapon.findById(req.params.id).populate("manufacturer").exec(), Corporation.find().sort({
               name: 1
             }).exec()]));
 

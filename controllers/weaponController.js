@@ -68,7 +68,7 @@ module.exports = {
       Weapon.schema.path("additional_effects").enumValues;
 
     const [weapon, allCorps] = await Promise.all([
-      Weapon.findById(req.params.id).exec(),
+      Weapon.findById(req.params.id).populate("manufacturer").exec(),
       Corporation.find().sort({ name: 1 }).exec(),
     ]);
 

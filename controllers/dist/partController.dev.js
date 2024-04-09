@@ -1,5 +1,13 @@
 "use strict";
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var asyncHandler = require("express-async-handler");
 
 var Part = require("../models/part");
@@ -372,34 +380,121 @@ module.exports = {
       }
     });
   })],
-  part_delete_get: asyncHandler(function _callee13(req, res) {
-    var part;
+  part_update_get: asyncHandler(function _callee13(req, res) {
+    var partTypeEnumArr, _ref, _ref2, part, allCorps;
+
     return regeneratorRuntime.async(function _callee13$(_context13) {
       while (1) {
         switch (_context13.prev = _context13.next) {
           case 0:
-            _context13.next = 2;
-            return regeneratorRuntime.awrap(Part.findById(req.params.id).populate("manufacturer").exec());
+            partTypeEnumArr = Part.schema.path("part_type").enumValues;
+            _context13.next = 3;
+            return regeneratorRuntime.awrap(Promise.all([Part.findById(req.params.id).populate("manufacturer").exec(), Corporation.find().sort({
+              name: 1
+            }).exec()]));
 
-          case 2:
-            part = _context13.sent;
-            res.render("part_delete", {
-              part: part
+          case 3:
+            _ref = _context13.sent;
+            _ref2 = _slicedToArray(_ref, 2);
+            part = _ref2[0];
+            allCorps = _ref2[1];
+            res.render("part_update", {
+              title: "Update Part",
+              part: part,
+              partTypeOptions: partTypeEnumArr,
+              manufacturerOptions: allCorps
             });
 
-          case 4:
+          case 8:
           case "end":
             return _context13.stop();
         }
       }
     });
   }),
-  part_delete_post: asyncHandler(function _callee14(req, res) {
+  part_update_post: [body("part_name").toUpperCase().trim().isLength({
+    min: 1
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee14(req, res) {
+    var errors, partTypeEnumArr, _ref3, _ref4, part, allCorps;
+
     return regeneratorRuntime.async(function _callee14$(_context14) {
       while (1) {
         switch (_context14.prev = _context14.next) {
           case 0:
-            _context14.next = 2;
+            errors = validationResult(req);
+            partTypeEnumArr = Part.schema.path("part_type").enumValues;
+            _context14.next = 4;
+            return regeneratorRuntime.awrap(Promise.all([Part.findById(req.params.id).populate("manufacturer").exec(), Corporation.find().sort({
+              name: 1
+            }).exec()]));
+
+          case 4:
+            _ref3 = _context14.sent;
+            _ref4 = _slicedToArray(_ref3, 2);
+            part = _ref4[0];
+            allCorps = _ref4[1];
+
+            if (errors.isEmpty()) {
+              _context14.next = 12;
+              break;
+            }
+
+            res.render("part_update", {
+              title: "Update Part",
+              part: part,
+              partTypeOptions: partTypeEnumArr,
+              manufacturerOptions: allCorps,
+              errors: errors.array()
+            });
+            _context14.next = 15;
+            break;
+
+          case 12:
+            _context14.next = 14;
+            return regeneratorRuntime.awrap(Part.findByIdAndUpdate(req.params.id, {
+              name: req.body.part_name,
+              part_type: req.body.part_type_drop,
+              manufacturer: req.body.manufacturers_drop
+            }));
+
+          case 14:
+            res.redirect(part.url);
+
+          case 15:
+          case "end":
+            return _context14.stop();
+        }
+      }
+    });
+  })],
+  part_delete_get: asyncHandler(function _callee15(req, res) {
+    var part;
+    return regeneratorRuntime.async(function _callee15$(_context15) {
+      while (1) {
+        switch (_context15.prev = _context15.next) {
+          case 0:
+            _context15.next = 2;
+            return regeneratorRuntime.awrap(Part.findById(req.params.id).populate("manufacturer").exec());
+
+          case 2:
+            part = _context15.sent;
+            res.render("part_delete", {
+              part: part
+            });
+
+          case 4:
+          case "end":
+            return _context15.stop();
+        }
+      }
+    });
+  }),
+  part_delete_post: asyncHandler(function _callee16(req, res) {
+    return regeneratorRuntime.async(function _callee16$(_context16) {
+      while (1) {
+        switch (_context16.prev = _context16.next) {
+          case 0:
+            _context16.next = 2;
             return regeneratorRuntime.awrap(Part.findByIdAndDelete(req.params.id).exec());
 
           case 2:
@@ -407,7 +502,7 @@ module.exports = {
 
           case 3:
           case "end":
-            return _context14.stop();
+            return _context16.stop();
         }
       }
     });

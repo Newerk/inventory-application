@@ -182,6 +182,59 @@ module.exports = {
     }),
   ],
 
+  part_update_get: asyncHandler(async (req, res) => {
+    const partTypeEnumArr = Part.schema.path("part_type").enumValues;
+
+    const [part, allCorps] = await Promise.all([
+      Part.findById(req.params.id).populate("manufacturer").exec(),
+      Corporation.find().sort({ name: 1 }).exec(),
+    ]);
+
+    res.render("part_update", {
+      title: "Update Part",
+      part: part,
+      partTypeOptions: partTypeEnumArr,
+      manufacturerOptions: allCorps,
+    });
+  }),
+
+  part_update_post: [
+    body("part_name")
+      .toUpperCase()
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Name cannot be blank"),
+
+    asyncHandler(async (req, res) => {
+      const errors = validationResult(req);
+
+      const partTypeEnumArr = Part.schema.path("part_type").enumValues;
+
+      const [part, allCorps] = await Promise.all([
+        Part.findById(req.params.id).populate("manufacturer").exec(),
+        Corporation.find().sort({ name: 1 }).exec(),
+      ]);
+
+      if (!errors.isEmpty()) {
+        res.render("part_update", {
+          title: "Update Part",
+          part: part,
+          partTypeOptions: partTypeEnumArr,
+          manufacturerOptions: allCorps,
+          errors: errors.array(),
+        });
+      } else {
+        await Part.findByIdAndUpdate(req.params.id, {
+          name: req.body.part_name,
+          part_type: req.body.part_type_drop,
+          manufacturer: req.body.manufacturers_drop,
+        });
+
+        res.redirect(part.url);
+      }
+    }),
+  ],
+
   part_delete_get: asyncHandler(async (req, res) => {
     const part = await Part.findById(req.params.id)
       .populate("manufacturer")
