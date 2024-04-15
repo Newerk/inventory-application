@@ -4,13 +4,6 @@ const Corporation = require("../models/coporation");
 const { body, validationResult } = require("express-validator");
 
 module.exports = {
-  placeholder: asyncHandler(async (req, res) => {
-    //placeholder
-    res.render("index", {
-      title: "Welcome to The Parts Shop 621",
-    });
-  }),
-
   //get all parts
   parts_list: asyncHandler(async (req, res) => {
     const allParts = await Part.find().sort({ name: 1 }).exec();

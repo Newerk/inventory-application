@@ -6,13 +6,6 @@ const { body, validationResult } = require("express-validator");
 const express = require("express");
 
 module.exports = {
-  placeholder: asyncHandler(async (req, res) => {
-    //placeholder
-    res.render("index", {
-      title: "Welcome to The Parts Shop 621",
-    });
-  }),
-
   //get all corporations
   corp_list: asyncHandler(async (req, res) => {
     const allCorps = await Corporation.find().sort({ name: 1 }).exec();
@@ -141,7 +134,7 @@ module.exports = {
     });
 
     await Corporation.findByIdAndDelete(req.params.id);
-    
+
     res.redirect("/catalog/corporations");
   }),
 };

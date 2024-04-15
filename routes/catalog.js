@@ -3,6 +3,19 @@ const router = express.Router();
 const corporation_controller = require("../controllers/corporationController");
 const weapon_controller = require("../controllers/weaponController");
 const part_controller = require("../controllers/partController");
+const asyncHandler = require("express-async-handler");
+
+//HOMEPAGE
+router.get(
+  "/",
+
+  //placeholder
+  asyncHandler(async (req, res) => {
+    res.render("index", {
+      title: "Welcome to The Shop 621",
+    });
+  })
+);
 
 //CORPORATION ROUTES
 router.get("/corporations", corporation_controller.corp_list);

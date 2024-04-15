@@ -15,37 +15,20 @@ var _require = require("express-validator"),
 var express = require("express");
 
 module.exports = {
-  placeholder: asyncHandler(function _callee(req, res) {
+  //get all corporations
+  corp_list: asyncHandler(function _callee(req, res) {
+    var allCorps;
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            //placeholder
-            res.render("index", {
-              title: "Welcome to The Parts Shop 621"
-            });
-
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }
-    });
-  }),
-  //get all corporations
-  corp_list: asyncHandler(function _callee2(req, res) {
-    var allCorps;
-    return regeneratorRuntime.async(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
+            _context.next = 2;
             return regeneratorRuntime.awrap(Corporation.find().sort({
               name: 1
             }).exec());
 
           case 2:
-            allCorps = _context2.sent;
+            allCorps = _context.sent;
             res.render("corp_list", {
               title: "Corporations",
               corporations: allCorps
@@ -53,23 +36,23 @@ module.exports = {
 
           case 4:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
       }
     });
   }),
   //get details of selected corporation
-  corp_detail: asyncHandler(function _callee3(req, res) {
+  corp_detail: asyncHandler(function _callee2(req, res) {
     var corp;
-    return regeneratorRuntime.async(function _callee3$(_context3) {
+    return regeneratorRuntime.async(function _callee2$(_context2) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            _context3.next = 2;
+            _context2.next = 2;
             return regeneratorRuntime.awrap(Corporation.findById(req.params.id).populate("weapons").populate("parts").exec());
 
           case 2:
-            corp = _context3.sent;
+            corp = _context2.sent;
             res.render("corp_detail", {
               title: corp.name,
               weapons: corp.weapons,
@@ -79,15 +62,15 @@ module.exports = {
 
           case 4:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
       }
     });
   }),
-  corp_create_get: asyncHandler(function _callee4(req, res) {
-    return regeneratorRuntime.async(function _callee4$(_context4) {
+  corp_create_get: asyncHandler(function _callee3(req, res) {
+    return regeneratorRuntime.async(function _callee3$(_context3) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             res.render("corp_create", {
               title: "Create New Corporation"
@@ -95,18 +78,18 @@ module.exports = {
 
           case 1:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
       }
     });
   }),
   corp_create_post: [body("corp_name").toUpperCase().trim().isLength({
     min: 1
-  }).withMessage("Name cannot be blank"), asyncHandler(function _callee5(req, res) {
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee4(req, res) {
     var errors, corp;
-    return regeneratorRuntime.async(function _callee5$(_context5) {
+    return regeneratorRuntime.async(function _callee4$(_context4) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
             errors = validationResult(req);
             corp = new Corporation({
@@ -114,7 +97,7 @@ module.exports = {
             });
 
             if (errors.isEmpty()) {
-              _context5.next = 7;
+              _context4.next = 7;
               break;
             }
 
@@ -123,10 +106,10 @@ module.exports = {
               corp: corp,
               errors: errors.array()
             });
-            return _context5.abrupt("return");
+            return _context4.abrupt("return");
 
           case 7:
-            _context5.next = 9;
+            _context4.next = 9;
             return regeneratorRuntime.awrap(corp.save());
 
           case 9:
@@ -134,22 +117,22 @@ module.exports = {
 
           case 10:
           case "end":
-            return _context5.stop();
+            return _context4.stop();
         }
       }
     });
   })],
-  corp_update_get: asyncHandler(function _callee6(req, res) {
+  corp_update_get: asyncHandler(function _callee5(req, res) {
     var corp;
-    return regeneratorRuntime.async(function _callee6$(_context6) {
+    return regeneratorRuntime.async(function _callee5$(_context5) {
       while (1) {
-        switch (_context6.prev = _context6.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
-            _context6.next = 2;
+            _context5.next = 2;
             return regeneratorRuntime.awrap(Corporation.findById(req.params.id).populate("weapons").populate("parts").exec());
 
           case 2:
-            corp = _context6.sent;
+            corp = _context5.sent;
             res.render("corp_update", {
               title: "Update Corporation",
               corp: corp
@@ -157,29 +140,29 @@ module.exports = {
 
           case 4:
           case "end":
-            return _context6.stop();
+            return _context5.stop();
         }
       }
     });
   }),
   corp_update_post: [body("corp_name").toUpperCase().trim().isLength({
     min: 1
-  }).withMessage("Name cannot be blank"), asyncHandler(function _callee7(req, res) {
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee6(req, res) {
     var errors, corp, _corp;
 
-    return regeneratorRuntime.async(function _callee7$(_context7) {
+    return regeneratorRuntime.async(function _callee6$(_context6) {
       while (1) {
-        switch (_context7.prev = _context7.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
             errors = validationResult(req);
-            _context7.next = 3;
+            _context6.next = 3;
             return regeneratorRuntime.awrap(Corporation.findById(req.params.id).exec());
 
           case 3:
-            corp = _context7.sent;
+            corp = _context6.sent;
 
             if (errors.isEmpty()) {
-              _context7.next = 8;
+              _context6.next = 8;
               break;
             }
 
@@ -188,18 +171,18 @@ module.exports = {
               initialName: corp.name,
               errors: errors.array()
             });
-            _context7.next = 14;
+            _context6.next = 14;
             break;
 
           case 8:
-            _context7.next = 10;
+            _context6.next = 10;
             return regeneratorRuntime.awrap(Corporation.findByIdAndUpdate(req.params.id, {
               name: req.body.corp_name
             }).exec());
 
           case 10:
-            _corp = _context7.sent;
-            _context7.next = 13;
+            _corp = _context6.sent;
+            _context6.next = 13;
             return regeneratorRuntime.awrap(_corp.save());
 
           case 13:
@@ -207,22 +190,22 @@ module.exports = {
 
           case 14:
           case "end":
-            return _context7.stop();
+            return _context6.stop();
         }
       }
     });
   })],
-  corp_delete_get: asyncHandler(function _callee8(req, res) {
+  corp_delete_get: asyncHandler(function _callee7(req, res) {
     var corp;
-    return regeneratorRuntime.async(function _callee8$(_context8) {
+    return regeneratorRuntime.async(function _callee7$(_context7) {
       while (1) {
-        switch (_context8.prev = _context8.next) {
+        switch (_context7.prev = _context7.next) {
           case 0:
-            _context8.next = 2;
+            _context7.next = 2;
             return regeneratorRuntime.awrap(Corporation.findById(req.params.id).populate("weapons").populate("parts").exec());
 
           case 2:
-            corp = _context8.sent;
+            corp = _context7.sent;
             res.render("corp_delete", {
               title: corp.name,
               totalWeapons: corp.weapons.length,
@@ -232,30 +215,47 @@ module.exports = {
 
           case 4:
           case "end":
-            return _context8.stop();
+            return _context7.stop();
         }
       }
     });
   }),
-  corp_delete_post: asyncHandler(function _callee11(req, res) {
+  corp_delete_post: asyncHandler(function _callee10(req, res) {
     var corp;
-    return regeneratorRuntime.async(function _callee11$(_context11) {
+    return regeneratorRuntime.async(function _callee10$(_context10) {
       while (1) {
-        switch (_context11.prev = _context11.next) {
+        switch (_context10.prev = _context10.next) {
           case 0:
-            _context11.next = 2;
+            _context10.next = 2;
             return regeneratorRuntime.awrap(Corporation.findById(req.params.id).populate("weapons").populate("parts").exec());
 
           case 2:
-            corp = _context11.sent;
-            corp.weapons.forEach(function _callee9(weapon) {
+            corp = _context10.sent;
+            corp.weapons.forEach(function _callee8(weapon) {
+              return regeneratorRuntime.async(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      _context8.next = 2;
+                      return regeneratorRuntime.awrap(Weapon.findOneAndDelete({
+                        name: weapon.name
+                      }));
+
+                    case 2:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              });
+            });
+            corp.parts.forEach(function _callee9(part) {
               return regeneratorRuntime.async(function _callee9$(_context9) {
                 while (1) {
                   switch (_context9.prev = _context9.next) {
                     case 0:
                       _context9.next = 2;
-                      return regeneratorRuntime.awrap(Weapon.findOneAndDelete({
-                        name: weapon.name
+                      return regeneratorRuntime.awrap(Part.findOneAndDelete({
+                        name: part.name
                       }));
 
                     case 2:
@@ -265,24 +265,7 @@ module.exports = {
                 }
               });
             });
-            corp.parts.forEach(function _callee10(part) {
-              return regeneratorRuntime.async(function _callee10$(_context10) {
-                while (1) {
-                  switch (_context10.prev = _context10.next) {
-                    case 0:
-                      _context10.next = 2;
-                      return regeneratorRuntime.awrap(Part.findOneAndDelete({
-                        name: part.name
-                      }));
-
-                    case 2:
-                    case "end":
-                      return _context10.stop();
-                  }
-                }
-              });
-            });
-            _context11.next = 7;
+            _context10.next = 7;
             return regeneratorRuntime.awrap(Corporation.findByIdAndDelete(req.params.id));
 
           case 7:
@@ -290,7 +273,7 @@ module.exports = {
 
           case 8:
           case "end":
-            return _context11.stop();
+            return _context10.stop();
         }
       }
     });

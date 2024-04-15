@@ -10,7 +10,7 @@ block content
             h2 Weapons
             ul 
                 each weapon in weapons 
-                    li
+                    li(class="content-links")
                         a(href=weapon.url) #{weapon.name} 
         else
             h2 This corporation has no weapons
@@ -20,7 +20,7 @@ block content
             h2 Parts
             ul 
                 each part in parts 
-                    li
+                    li(class="content-links")
                         a(href=part.url) #{part.name} 
         else
             h2 This corporation has no parts

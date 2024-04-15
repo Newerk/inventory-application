@@ -19,40 +19,52 @@ var _require = require("express-validator"),
     validationResult = _require.validationResult;
 
 module.exports = {
-  placeholder: asyncHandler(function _callee(req, res, next) {
+  //get all weapons
+  weapons_list: asyncHandler(function _callee(req, res, next) {
+    var allWeapons;
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            //placeholder
-            res.render("index", {
-              title: "Welcome to The Parts Shop 621"
+            _context.next = 2;
+            return regeneratorRuntime.awrap(Weapon.find().sort({
+              name: 1
+            }).exec());
+
+          case 2:
+            allWeapons = _context.sent;
+            res.render("weapons_list", {
+              title: "Weapons",
+              weaponsArr: allWeapons
             });
 
-          case 1:
+          case 4:
           case "end":
             return _context.stop();
         }
       }
     });
   }),
-  //get all weapons
-  weapons_list: asyncHandler(function _callee2(req, res, next) {
-    var allWeapons;
+  //get arm weapons
+  weapons_arms: asyncHandler(function _callee2(req, res, next) {
+    var armWeapons;
     return regeneratorRuntime.async(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return regeneratorRuntime.awrap(Weapon.find().sort({
+            return regeneratorRuntime.awrap(Weapon.find({
+              attached_to: "Arms"
+            }).sort({
               name: 1
             }).exec());
 
           case 2:
-            allWeapons = _context2.sent;
-            res.render("weapons_list", {
+            armWeapons = _context2.sent;
+            res.render("weapons_list_filtered", {
               title: "Weapons",
-              weaponsArr: allWeapons
+              subtitle: "Arm Weapons",
+              filteredWeapons: armWeapons
             });
 
           case 4:
@@ -62,26 +74,26 @@ module.exports = {
       }
     });
   }),
-  //get arm weapons
-  weapons_arms: asyncHandler(function _callee3(req, res, next) {
-    var armWeapons;
+  //get back weapons
+  weapons_back: asyncHandler(function _callee3(req, res, next) {
+    var backWeapons;
     return regeneratorRuntime.async(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
             return regeneratorRuntime.awrap(Weapon.find({
-              attached_to: "Arms"
+              attached_to: "Back"
             }).sort({
               name: 1
             }).exec());
 
           case 2:
-            armWeapons = _context3.sent;
+            backWeapons = _context3.sent;
             res.render("weapons_list_filtered", {
               title: "Weapons",
-              subtitle: "Arm Weapons",
-              filteredWeapons: armWeapons
+              subtitle: "Back Weapons",
+              filteredWeapons: backWeapons
             });
 
           case 4:
@@ -91,26 +103,20 @@ module.exports = {
       }
     });
   }),
-  //get back weapons
-  weapons_back: asyncHandler(function _callee4(req, res, next) {
-    var backWeapons;
+  weapon_detail: asyncHandler(function _callee4(req, res) {
+    var weapon;
     return regeneratorRuntime.async(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return regeneratorRuntime.awrap(Weapon.find({
-              attached_to: "Back"
-            }).sort({
-              name: 1
-            }).exec());
+            return regeneratorRuntime.awrap(Weapon.findById(req.params.id).populate("manufacturer").exec());
 
           case 2:
-            backWeapons = _context4.sent;
-            res.render("weapons_list_filtered", {
-              title: "Weapons",
-              subtitle: "Back Weapons",
-              filteredWeapons: backWeapons
+            weapon = _context4.sent;
+            res.render("weapon_detail", {
+              title: weapon.name,
+              weapon: weapon
             });
 
           case 4:
@@ -120,35 +126,12 @@ module.exports = {
       }
     });
   }),
-  weapon_detail: asyncHandler(function _callee5(req, res) {
-    var weapon;
+  weapon_update_get: asyncHandler(function _callee5(req, res) {
+    var attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, _ref, _ref2, weapon, allCorps;
+
     return regeneratorRuntime.async(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return regeneratorRuntime.awrap(Weapon.findById(req.params.id).populate("manufacturer").exec());
-
-          case 2:
-            weapon = _context5.sent;
-            res.render("weapon_detail", {
-              title: weapon.name,
-              weapon: weapon
-            });
-
-          case 4:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    });
-  }),
-  weapon_update_get: asyncHandler(function _callee6(req, res) {
-    var attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, _ref, _ref2, weapon, allCorps;
-
-    return regeneratorRuntime.async(function _callee6$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
           case 0:
             attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
             partClassEnumArr = Weapon.schema.path("part_class").enumValues; //seperate into seperate lists for arms and back??? it would be more accurate to the game
@@ -157,13 +140,13 @@ module.exports = {
             weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
             reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
             additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
-            _context6.next = 8;
+            _context5.next = 8;
             return regeneratorRuntime.awrap(Promise.all([Weapon.findById(req.params.id).populate("manufacturer").exec(), Corporation.find().sort({
               name: 1
             }).exec()]));
 
           case 8:
-            _ref = _context6.sent;
+            _ref = _context5.sent;
             _ref2 = _slicedToArray(_ref, 2);
             weapon = _ref2[0];
             allCorps = _ref2[1];
@@ -181,19 +164,19 @@ module.exports = {
 
           case 13:
           case "end":
-            return _context6.stop();
+            return _context5.stop();
         }
       }
     });
   }),
   weapon_update_post: [body("weapon_name").toUpperCase().trim().isLength({
     min: 1
-  }).withMessage("Name cannot be blank"), asyncHandler(function _callee7(req, res) {
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee6(req, res) {
     var errors, attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, _ref3, _ref4, weapon, allCorps;
 
-    return regeneratorRuntime.async(function _callee7$(_context7) {
+    return regeneratorRuntime.async(function _callee6$(_context6) {
       while (1) {
-        switch (_context7.prev = _context7.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
             errors = validationResult(req);
             attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
@@ -203,19 +186,19 @@ module.exports = {
             weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
             reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
             additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
-            _context7.next = 9;
+            _context6.next = 9;
             return regeneratorRuntime.awrap(Promise.all([Weapon.findById(req.params.id).exec(), Corporation.find().sort({
               name: 1
             }).exec()]));
 
           case 9:
-            _ref3 = _context7.sent;
+            _ref3 = _context6.sent;
             _ref4 = _slicedToArray(_ref3, 2);
             weapon = _ref4[0];
             allCorps = _ref4[1];
 
             if (errors.isEmpty()) {
-              _context7.next = 17;
+              _context6.next = 17;
               break;
             }
 
@@ -231,11 +214,11 @@ module.exports = {
               manufacturerOptions: allCorps,
               errors: errors.array()
             });
-            _context7.next = 20;
+            _context6.next = 20;
             break;
 
           case 17:
-            _context7.next = 19;
+            _context6.next = 19;
             return regeneratorRuntime.awrap(Weapon.findByIdAndUpdate(req.params.id, {
               name: req.body.weapon_name,
               attached_to: req.body.attached_to_drop,
@@ -252,16 +235,16 @@ module.exports = {
 
           case 20:
           case "end":
-            return _context7.stop();
+            return _context6.stop();
         }
       }
     });
   })],
-  weapon_create_get: asyncHandler(function _callee8(req, res) {
+  weapon_create_get: asyncHandler(function _callee7(req, res) {
     var attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, allCorps;
-    return regeneratorRuntime.async(function _callee8$(_context8) {
+    return regeneratorRuntime.async(function _callee7$(_context7) {
       while (1) {
-        switch (_context8.prev = _context8.next) {
+        switch (_context7.prev = _context7.next) {
           case 0:
             attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
             partClassEnumArr = Weapon.schema.path("part_class").enumValues; //seperate into seperate lists for arms and back??? it would be more accurate to the game
@@ -270,13 +253,13 @@ module.exports = {
             weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
             reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
             additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
-            _context8.next = 8;
+            _context7.next = 8;
             return regeneratorRuntime.awrap(Corporation.find().sort({
               name: 1
             }).exec());
 
           case 8:
-            allCorps = _context8.sent;
+            allCorps = _context7.sent;
             res.render("weapon_create", {
               title: "Create New Weapon",
               attachedToOptions: attachedToEnumArr,
@@ -290,18 +273,18 @@ module.exports = {
 
           case 10:
           case "end":
-            return _context8.stop();
+            return _context7.stop();
         }
       }
     });
   }),
   weapon_create_post: [body("weapon_name").toUpperCase().trim().isLength({
     min: 1
-  }).withMessage("Name cannot be blank"), asyncHandler(function _callee9(req, res) {
+  }).withMessage("Name cannot be blank"), asyncHandler(function _callee8(req, res) {
     var errors, attachedToEnumArr, partClassEnumArr, attackTypeEnumArr, weaponTypeEnumArr, reloadTypeEnumArr, additionalEffeectsEnumArr, allCorps, manufacturer, weapon;
-    return regeneratorRuntime.async(function _callee9$(_context9) {
+    return regeneratorRuntime.async(function _callee8$(_context8) {
       while (1) {
-        switch (_context9.prev = _context9.next) {
+        switch (_context8.prev = _context8.next) {
           case 0:
             errors = validationResult(req);
             attachedToEnumArr = Weapon.schema.path("attached_to").enumValues;
@@ -311,13 +294,13 @@ module.exports = {
             weaponTypeEnumArr = Weapon.schema.path("weapon_type").enumValues;
             reloadTypeEnumArr = Weapon.schema.path("reload_type").enumValues;
             additionalEffeectsEnumArr = Weapon.schema.path("additional_effects").enumValues;
-            _context9.next = 9;
+            _context8.next = 9;
             return regeneratorRuntime.awrap(Corporation.find().sort({
               name: 1
             }).exec());
 
           case 9:
-            allCorps = _context9.sent;
+            allCorps = _context8.sent;
             manufacturer = allCorps.find(function (corp) {
               return corp.name === req.body.manufacturer;
             });
@@ -333,7 +316,7 @@ module.exports = {
             });
 
             if (errors.isEmpty()) {
-              _context9.next = 16;
+              _context8.next = 16;
               break;
             }
 
@@ -348,11 +331,11 @@ module.exports = {
               manufacturerOptions: allCorps,
               errors: errors.array()
             });
-            _context9.next = 21;
+            _context8.next = 21;
             break;
 
           case 16:
-            _context9.next = 18;
+            _context8.next = 18;
             return regeneratorRuntime.awrap(Corporation.findByIdAndUpdate(manufacturer._id, {
               $push: {
                 weapons: weapon
@@ -360,7 +343,7 @@ module.exports = {
             }));
 
           case 18:
-            _context9.next = 20;
+            _context8.next = 20;
             return regeneratorRuntime.awrap(weapon.save());
 
           case 20:
@@ -368,22 +351,22 @@ module.exports = {
 
           case 21:
           case "end":
-            return _context9.stop();
+            return _context8.stop();
         }
       }
     });
   })],
-  weapon_delete_get: asyncHandler(function _callee10(req, res) {
+  weapon_delete_get: asyncHandler(function _callee9(req, res) {
     var weapon;
-    return regeneratorRuntime.async(function _callee10$(_context10) {
+    return regeneratorRuntime.async(function _callee9$(_context9) {
       while (1) {
-        switch (_context10.prev = _context10.next) {
+        switch (_context9.prev = _context9.next) {
           case 0:
-            _context10.next = 2;
+            _context9.next = 2;
             return regeneratorRuntime.awrap(Weapon.findById(req.params.id).exec());
 
           case 2:
-            weapon = _context10.sent;
+            weapon = _context9.sent;
             res.render("weapon_delete", {
               title: weapon.name,
               weapon: weapon
@@ -391,17 +374,17 @@ module.exports = {
 
           case 4:
           case "end":
-            return _context10.stop();
+            return _context9.stop();
         }
       }
     });
   }),
-  weapon_delete_post: asyncHandler(function _callee11(req, res) {
-    return regeneratorRuntime.async(function _callee11$(_context11) {
+  weapon_delete_post: asyncHandler(function _callee10(req, res) {
+    return regeneratorRuntime.async(function _callee10$(_context10) {
       while (1) {
-        switch (_context11.prev = _context11.next) {
+        switch (_context10.prev = _context10.next) {
           case 0:
-            _context11.next = 2;
+            _context10.next = 2;
             return regeneratorRuntime.awrap(Weapon.findByIdAndDelete(req.params.id).exec());
 
           case 2:
@@ -409,7 +392,7 @@ module.exports = {
 
           case 3:
           case "end":
-            return _context11.stop();
+            return _context10.stop();
         }
       }
     });

@@ -7,43 +7,59 @@ html
     div(class="body-container")
       block sidebar 
         ul(class='sidebar-nav')
+          li 
+            a(href="/catalog") 
+              button(class="link") Home
           li
-            a(href="/catalog") Home
+            a(href="/catalog/corporations") 
+              button(class="link") All Corporations
           li
-            a(href="/catalog/corporations") All Corporations
+            a(href="/catalog/weapons") 
+              button(class="link") All Weapons
+            ul(class='sublinks') 
+              li 
+                a(href="/catalog/weapons/arms")
+                  button(class="link") Arm 
+              li 
+                a(href="/catalog/weapons/back")
+                  button(class="link") Back 
           li
-            a(href="/catalog/weapons") All Weapons
-            ul 
+            a(href="/catalog/parts") 
+              button(class="link") All Parts 
+            ul(class='sublinks') 
               li 
-                a(href="/catalog/weapons/arms") Arm 
+                a(href="/catalog/parts/head")
+                  button(class="link") Head 
               li 
-                a(href="/catalog/weapons/back") Back 
-          li
-            a(href="/catalog/parts") All Parts 
-            ul 
+                a(href="/catalog/parts/body")
+                  button(class="link") Body 
               li 
-                a(href="/catalog/parts/head") Head 
+                a(href="/catalog/parts/arms")
+                  button(class="link") Arms 
               li 
-                a(href="/catalog/parts/body") Body 
+                a(href="/catalog/parts/legs")
+                  button(class="link") Legs 
               li 
-                a(href="/catalog/parts/arms") Arms 
+                a(href="/catalog/parts/boosters")
+                  button(class="link") Boosters 
               li 
-                a(href="/catalog/parts/legs") Legs 
+                a(href="/catalog/parts/fcs")
+                  button(class="link") FCS 
               li 
-                a(href="/catalog/parts/boosters") Boosters 
-              li 
-                a(href="/catalog/parts/fcs") FCS 
-              li 
-                a(href="/catalog/parts/generators") Generators 
+                a(href="/catalog/parts/generators")
+                  button(class="link") Generators 
 
           li
-            a(href="/catalog/corporation/create") Create Corporation
+            a(href="/catalog/corporation/create") 
+              button(class="link") Create Corporation
 
           li
-            a(href="/catalog/weapon/create") Create Weapon
+            a(href="/catalog/weapon/create") 
+              button(class="link") Create Weapon
 
           li
-            a(href="/catalog/part/create") Create Part
+            a(href="/catalog/part/create") 
+              button(class="link") Create Part
 
       div(class='content-container')
         block content

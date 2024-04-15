@@ -8,8 +8,28 @@ var corporation_controller = require("../controllers/corporationController");
 
 var weapon_controller = require("../controllers/weaponController");
 
-var part_controller = require("../controllers/partController"); //CORPORATION ROUTES
+var part_controller = require("../controllers/partController");
 
+var asyncHandler = require("express-async-handler"); //HOMEPAGE
+
+
+router.get("/", //placeholder
+asyncHandler(function _callee(req, res) {
+  return regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          res.render("index", {
+            title: "Welcome to The Shop 621"
+          });
+
+        case 1:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+})); //CORPORATION ROUTES
 
 router.get("/corporations", corporation_controller.corp_list);
 router.get("/corporation/create", corporation_controller.corp_create_get);
