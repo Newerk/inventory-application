@@ -4,6 +4,8 @@
   --text-color: #e9faff;
   --title-bg: #6f8596;
   --sections-bg: #3f526b;
+  --unfocused-btn-bg: #4d6079;
+  --btn-bg-hover: #61768b;
 }
 
 /*CSS RESET*/
@@ -117,20 +119,44 @@ ul {
   background-color: var(--on-hover);
 }
 
+.top-most {
+  margin-bottom: 0.5rem;
+}
+
 .link {
-  padding: 0.5rem;
+  padding: 0.7rem 0.5rem;
   background-color: var(--title-bg);
   width: 100%;
   color: var(--text-color);
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.sublinks {
+  gap: 0.4rem;
 }
 
 .sublinks > li > a > .link {
-  margin-left: 2rem;
+  width: 12rem;
+  text-align: center;
+}
+
+.sublinks > li {
+  background-color: var(--unfocused-btn-bg);
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.sublinks > li:hover {
+  background-color: var(--btn-bg-hover);
 }
 
 a {
   color: var(--text-color);
 }
 
-.content-links {
+.content-link > a {
+  text-decoration: none;
 }
