@@ -2,7 +2,7 @@ extends layout
 
 block content 
     div(class="header-gradient")
-        p(style="text-transform:uppercase") #{part.part_type}
+        p= part.part_type.toUpperCase()
         h1= part.name
     h2(class="details-h2") Part Details   
     p Manufacturer: #{part.manufacturer.name}

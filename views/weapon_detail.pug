@@ -2,7 +2,7 @@ extends layout
 
 block content 
     div(class="header-gradient")
-        p(style="text-transform:uppercase") #{weapon.attached_to}
+        p= weapon.attached_to.toUpperCase()
         h1= title 
     h2(class="details-h2") Weapon Details 
     p Part Class: #{weapon.part_class}
