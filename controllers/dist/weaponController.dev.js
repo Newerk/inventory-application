@@ -63,7 +63,7 @@ module.exports = {
             armWeapons = _context2.sent;
             res.render("weapons_list_filtered", {
               title: "Weapons",
-              subtitle: "Arm Weapons",
+              subtitle: "Arms",
               filteredWeapons: armWeapons
             });
 
@@ -92,7 +92,7 @@ module.exports = {
             backWeapons = _context3.sent;
             res.render("weapons_list_filtered", {
               title: "Weapons",
-              subtitle: "Back Weapons",
+              subtitle: "Back",
               filteredWeapons: backWeapons
             });
 

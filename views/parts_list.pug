@@ -1,10 +1,12 @@
 extends layout 
 
 block content 
-    h1= title
+
+    div(class="header-solid")
+        h1= title
 
     if partsArr.length    
-        ul 
+        ul(class="ul-container") 
             each part in partsArr
                 li(class="content-link") 
                     a(href=part.url) #{part.name} 

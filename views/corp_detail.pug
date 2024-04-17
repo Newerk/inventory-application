@@ -1,29 +1,31 @@
 extends layout 
 
 block content 
-    h1 Corporation: #{title} 
+    div(class="header-solid")
+        h1 #{title} 
 
     if !weapons.length && !parts.length
         h2 This corporation has no weapons or parts
     else
-        if weapons.length  
-            h2 Weapons
-            ul 
-                each weapon in weapons 
-                    li(class="content-link")
-                        a(href=weapon.url) #{weapon.name} 
-        else
-            h2 This corporation has no weapons
+        div(class="ul-container") 
+            if weapons.length  
+                h2 Weapons
+                ul 
+                    each weapon in weapons 
+                        li(class="content-link")
+                            a(href=weapon.url) #{weapon.name} 
+            else
+                h2 This corporation has no weapons
 
 
-        if parts.length  
-            h2 Parts
-            ul 
-                each part in parts 
-                    li(class="content-link")
-                        a(href=part.url) #{part.name} 
-        else
-            h2 This corporation has no parts
+            if parts.length  
+                h2 Parts
+                ul 
+                    each part in parts 
+                        li(class="content-link")
+                            a(href=part.url) #{part.name} 
+            else
+                h2 This corporation has no parts
 
     a(href=`${corp.url}/update`) Update 
     a(href=`${corp.url}/delete`) Delete 

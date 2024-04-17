@@ -1,9 +1,10 @@
 extends layout 
 
 block content 
-    h1= title 
-    h2 Details 
-    p Category: #{weapon.attached_to}
+    div(class="header-gradient")
+        p(style="text-transform:uppercase") #{weapon.attached_to}
+        h1= title 
+    h2(class="details-h2") Weapon Details 
     p Part Class: #{weapon.part_class}
     p Attack Type: #{weapon.attack_type}
     p Weapon Type: #{weapon.weapon_type}

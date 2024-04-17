@@ -1,11 +1,11 @@
 extends layout 
 
 block content 
-    h1= title
+    div(class="header-solid")
+        h1 #{title} #{'('} #{subtitle} #{')'}
 
     if filteredWeapons.length
-        h2= subtitle
-        ul
+        ul(class="ul-container") 
             each weapon in filteredWeapons
                 li(class="content-link") 
                     a(href=weapon.url) #{weapon.name} 

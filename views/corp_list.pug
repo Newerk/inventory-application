@@ -1,9 +1,10 @@
 extends layout 
 
 block content 
-    h1= title 
+    div(class="header-solid")
+        h1= title 
     if corporations.length 
-        ul 
+        ul(class="ul-container")  
             each corp in corporations 
                 li(class="content-link")
                     a(href=corp.url) #{corp.name} 

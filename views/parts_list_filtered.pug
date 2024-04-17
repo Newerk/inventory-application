@@ -1,11 +1,11 @@
 extends layout 
 
 block content 
-    h1= title
+    div(class="header-solid")
+        h1 #{title} #{'('} #{subtitle} #{')'}
 
     if filteredParts.length
-        h2= subtitle
-        ul
+        ul(class="ul-container") 
             each part in filteredParts
                 li(class="content-link") 
                     a(href=part.url) #{part.name} 

@@ -1,10 +1,10 @@
 extends layout 
 
 block content 
-    p GENERATOR     
-    h1= part.name
-    h2 Details:   
-    p #{part.part_type}
+    div(class="header-gradient")
+        p(style="text-transform:uppercase") #{part.part_type}
+        h1= part.name
+    h2(class="details-h2") Part Details   
     p Manufacturer: #{part.manufacturer.name}
 
     a(href=`${part.url}/update`) Update Part   

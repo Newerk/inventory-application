@@ -22,7 +22,7 @@ module.exports = {
 
     res.render("weapons_list_filtered", {
       title: "Weapons",
-      subtitle: "Arm Weapons",
+      subtitle: "Arms",
       filteredWeapons: armWeapons,
     });
   }),
@@ -35,7 +35,7 @@ module.exports = {
 
     res.render("weapons_list_filtered", {
       title: "Weapons",
-      subtitle: "Back Weapons",
+      subtitle: "Back",
       filteredWeapons: backWeapons,
     });
   }),

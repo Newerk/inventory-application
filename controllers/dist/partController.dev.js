@@ -86,7 +86,7 @@ module.exports = {
             headParts = _context3.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Head Parts",
+              subtitle: "Head",
               filteredParts: headParts
             });
 
@@ -115,7 +115,7 @@ module.exports = {
             bodyParts = _context4.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Body Parts",
+              subtitle: "Body",
               filteredParts: bodyParts
             });
 
@@ -144,7 +144,7 @@ module.exports = {
             armParts = _context5.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Arm Parts",
+              subtitle: "Arms",
               filteredParts: armParts
             });
 
@@ -173,7 +173,7 @@ module.exports = {
             legParts = _context6.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Leg Parts",
+              subtitle: "Legs",
               filteredParts: legParts
             });
 
@@ -202,7 +202,7 @@ module.exports = {
             boosterParts = _context7.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Booster Parts",
+              subtitle: "Booster",
               filteredParts: boosterParts
             });
 
@@ -231,7 +231,7 @@ module.exports = {
             fcsParts = _context8.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "FCS Parts",
+              subtitle: "FCS",
               filteredParts: fcsParts
             });
 
@@ -260,7 +260,7 @@ module.exports = {
             generatorParts = _context9.sent;
             res.render("parts_list_filtered", {
               title: "Parts",
-              subtitle: "Generator Parts",
+              subtitle: "Generator",
               filteredParts: generatorParts
             });
 

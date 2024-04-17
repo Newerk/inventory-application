@@ -33,7 +33,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Head Parts",
+      subtitle: "Head",
       filteredParts: headParts,
     });
   }),
@@ -46,7 +46,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Body Parts",
+      subtitle: "Body",
       filteredParts: bodyParts,
     });
   }),
@@ -59,7 +59,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Arm Parts",
+      subtitle: "Arms",
       filteredParts: armParts,
     });
   }),
@@ -72,7 +72,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Leg Parts",
+      subtitle: "Legs",
       filteredParts: legParts,
     });
   }),
@@ -85,7 +85,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Booster Parts",
+      subtitle: "Booster",
       filteredParts: boosterParts,
     });
   }),
@@ -98,7 +98,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "FCS Parts",
+      subtitle: "FCS",
       filteredParts: fcsParts,
     });
   }),
@@ -111,7 +111,7 @@ module.exports = {
 
     res.render("parts_list_filtered", {
       title: "Parts",
-      subtitle: "Generator Parts",
+      subtitle: "Generator",
       filteredParts: generatorParts,
     });
   }),
