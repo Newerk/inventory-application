@@ -1,12 +1,19 @@
 extends layout 
 
 block content 
+
     div(class="header-solid")
         h1= title
 
     if weaponsArr.length    
         ul(class="ul-container") 
-            each weapon in weaponsArr
-                li(class="content-link") 
-                    a(href=weapon.url) #{weapon.name} 
+            - for(var i = 0; i < weaponsArr.length; i++) {
+                if i % 2 === 0
+                    li(class="content-link bg-dark") 
+                        a(href=weaponsArr[i].url) #{weaponsArr[i].name} 
+                else    
+                    li(class="content-link bg-light") 
+                        a(href=weaponsArr[i].url) #{weaponsArr[i].name}
+            - }
         
+

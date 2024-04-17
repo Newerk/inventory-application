@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --main-bg: #141d28;
@@ -11,9 +9,9 @@
   --unfocused-btn-bg: #4d6079;
   --btn-bg-hover: #61768b;
   --solid-header-bg: #323f55;
-  /* --header-font: "Montserrat", sans-serif; */
+  --link-dark-bg: #27354c;
+  --link-light-bg: #344159;
   --header-font: "Chakra Petch", sans-serif;
-  /* --header-font: "Cairo", sans-serif; */
 }
 
 /*CSS RESET*/
@@ -210,4 +208,21 @@ h1 {
 
 .ul-container {
   overflow-y: scroll;
+  gap: 0;
+}
+
+.bg-dark {
+  background-color: var(--link-dark-bg);
+  padding: .5rem;
+}
+
+.bg-light {
+  background-color: var(--link-light-bg);
+  padding: .5rem;
+
+}
+
+.bg-dark:hover,
+.bg-light:hover {
+  background-color: var(--on-hover);
 }

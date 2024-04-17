@@ -1,3 +1,35 @@
+//- extends layout 
+
+//- block content 
+//-     div(class="header-solid")
+//-         h1 #{title} 
+
+//-     if !weapons.length && !parts.length
+//-         h2 This corporation has no weapons or parts
+//-     else
+//-         div(class="ul-container") 
+//-             if weapons.length  
+//-                 h2 Weapons
+//-                 ul 
+//-                     each weapon in weapons 
+//-                         li(class="content-link")
+//-                             a(href=weapon.url) #{weapon.name} 
+//-             else
+//-                 h2 This corporation has no weapons
+
+
+//-             if parts.length  
+//-                 h2 Parts
+//-                 ul 
+//-                     each part in parts 
+//-                         li(class="content-link")
+//-                             a(href=part.url) #{part.name} 
+//-             else
+//-                 h2 This corporation has no parts
+
+//-     a(href=`${corp.url}/update`) Update 
+//-     a(href=`${corp.url}/delete`) Delete 
+
 extends layout 
 
 block content 
@@ -10,20 +42,31 @@ block content
         div(class="ul-container") 
             if weapons.length  
                 h2 Weapons
-                ul 
-                    each weapon in weapons 
-                        li(class="content-link")
-                            a(href=weapon.url) #{weapon.name} 
+                ul(class="ul-container")  
+                    - for(var i = 0; i < weapons.length; i++) {
+                        if i % 2 === 0
+                            li(class="content-link bg-dark") 
+                                a(href=weapons[i].url) #{weapons[i].name} 
+                        else    
+                            li(class="content-link bg-light") 
+                                a(href=weapons[i].url) #{weapons[i].name}
+                    - }
+
             else
                 h2 This corporation has no weapons
 
 
             if parts.length  
                 h2 Parts
-                ul 
-                    each part in parts 
-                        li(class="content-link")
-                            a(href=part.url) #{part.name} 
+                ul(class="ul-container")  
+                    - for(var i = 0; i < parts.length; i++) {
+                        if i % 2 === 0
+                            li(class="content-link bg-dark") 
+                                a(href=parts[i].url) #{parts[i].name} 
+                        else    
+                            li(class="content-link bg-light") 
+                                a(href=parts[i].url) #{parts[i].name}
+                    - }
             else
                 h2 This corporation has no parts
 

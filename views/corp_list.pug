@@ -5,6 +5,11 @@ block content
         h1= title 
     if corporations.length 
         ul(class="ul-container")  
-            each corp in corporations 
-                li(class="content-link")
-                    a(href=corp.url) #{corp.name} 
+            - for(var i = 0; i < corporations.length; i++) {
+                if i % 2 === 0
+                    li(class="content-link bg-dark")
+                        a(href=corporations[i].url) #{corporations[i].name} 
+                else 
+                    li(class="content-link bg-light")
+                        a(href=corporations[i].url) #{corporations[i].name} 
+            - }

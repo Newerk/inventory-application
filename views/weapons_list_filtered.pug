@@ -6,7 +6,12 @@ block content
 
     if filteredWeapons.length
         ul(class="ul-container") 
-            each weapon in filteredWeapons
-                li(class="content-link") 
-                    a(href=weapon.url) #{weapon.name} 
+            - for(var i = 0; i < filteredWeapons.length; i++) {
+                if i % 2 === 0
+                    li(class="content-link bg-dark") 
+                        a(href=filteredWeapons[i].url) #{filteredWeapons[i].name} 
+                else 
+                    li(class="content-link bg-light") 
+                        a(href=filteredWeapons[i].url) #{filteredWeapons[i].name}
+            - }
         

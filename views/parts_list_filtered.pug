@@ -6,7 +6,12 @@ block content
 
     if filteredParts.length
         ul(class="ul-container") 
-            each part in filteredParts
-                li(class="content-link") 
-                    a(href=part.url) #{part.name} 
+            - for(var i = 0; i < filteredParts.length; i++) {
+                if i % 2 === 0
+                    li(class="content-link bg-dark") 
+                        a(href=filteredParts[i].url) #{filteredParts[i].name} 
+                else 
+                    li(class="content-link bg-light") 
+                        a(href=filteredParts[i].url) #{filteredParts[i].name}
+            - }
         
