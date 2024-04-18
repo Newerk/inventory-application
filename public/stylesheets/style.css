@@ -194,8 +194,8 @@ h1 {
   font-size: 15px;
   font-family: var(--header-font);
   font-weight: 300;
-  padding-bottom: 1rem;
-  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-top: 1rem;
 }
 
 .details-h2::before {
@@ -290,7 +290,8 @@ h1 {
   justify-content: space-evenly;
 }
 
-.p-wrapper {
+.p-wrapper,
+.form-row {
   display: grid;
   grid-template-columns: 1fr 22rem;
   background-color: var(--unfocused-btn-bg);
@@ -312,4 +313,49 @@ h1 {
   padding: 0.4rem;
   text-align: center;
   font-family: var(--header-font);
+}
+
+.submit-btn {
+  padding: 0.4rem;
+  background-color: var(--title-bg);
+  border-style: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+form {
+  font-size: 20px;
+}
+
+.form-row {
+  grid-template-columns: 17rem 1fr;
+}
+
+.form-label {
+  padding: 0.4rem;
+  text-align: start;
+}
+
+.form-input {
+  background-color: var(--btn-bg-dark);
+  font-family: var(--header-font);
+  border-style: none;
+  color: var(--text-color);
+  padding: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.form-input:focus {
+  outline: none !important;
+  border: 2px solid var(--ac6-blue);
+}
+
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
+.text-input {
+  cursor:text;
 }

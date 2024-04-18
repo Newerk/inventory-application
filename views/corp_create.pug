@@ -1,12 +1,14 @@
 extends layout 
 
-block content 
-    h1= title
+block content
+    div(class="header-solid")
+        h1= title
 
     form(method="post") 
-        label(for="corp_name") Corporation Name: 
-        input#corp_name(type="text", name="corp_name") 
-        button(type="submit") Save Corporation
+        div(class="form-row")
+            label(for="corp_name", class="form-label") Corporation Name 
+            input#corp_name(type="text", name="corp_name", class="form-input text-input") 
+        button(type="submit", class="submit-btn") Save Corporation
 
     if errors
         ul

@@ -6,10 +6,10 @@ block content
     form(method="post") 
         label(for="corp_name") Corporation Name: 
         input#corp_name(type="text", name="corp_name", value=corp.name) 
-        button(type="submit") Save Changes
+        button(type="submit", class="submit-btn") Save Changes
 
         form(action=corp.url, method="get")
-            button(type="submit") Cancel Changes
+            button(type="submit", class="submit-btn") Cancel Changes
 
     if errors
         ul

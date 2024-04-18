@@ -1,24 +1,28 @@
 extends layout 
 
 block content 
-    h1= title
+    div(class="header-solid")
+        h1= title
 
     form(method="post") 
-        label(for="part_name") Part Name: 
-        input#part_name(type="text", name="part_name") 
+        div(class="form-row")
+            label(for="part_name", class="form-label") Part Name 
+            input#part_name(type="text", name="part_name", class="form-input text-input") 
 
-        label(for="part_type") Part Type: 
-        select#part_type_drop(name="part_type")
-            each choice in partTypeOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="part_type", class="form-label") Part Type 
+            select#part_type_drop(name="part_type", class="form-input")
+                each choice in partTypeOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="manufacturer") Manufacturer: 
-        select#manufacturers_drop(name="manufacturer")
-            each choice in manufacturerOptions 
-                option(value=choice.name) #{choice.name}  
+        div(class="form-row")
+            label(for="manufacturer", class="form-label") Manufacturer 
+            select#manufacturers_drop(name="manufacturer", class="form-input")
+                each choice in manufacturerOptions 
+                    option(value=choice.name) #{choice.name}  
 
 
-        button(type="submit") Create Part
+        button(type="submit", class="submit-btn") Create Part
 
     if errors
         ul

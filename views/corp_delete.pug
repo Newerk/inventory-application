@@ -8,8 +8,8 @@ block content
         p.warning Are you sure you want to delete this corporation? All weapons 
         |and parts belonging to them will also be deleted
     form(method="post") 
-        button(type="submit") Yes
+        button(type="submit", class="submit-btn") Yes
 
     form(action=corp.url, method="get")
-        button(type="submit") No
+        button(type="submit", class="submit-btn") No
 

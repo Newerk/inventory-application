@@ -1,51 +1,60 @@
 extends layout 
 
 block content 
-    h1= title
+    div(class="header-solid")
+        h1= title
 
     form(method="post") 
-        label(for="weapon_name") Weapon Name: 
-        input#weapon_name(type="text", name="weapon_name") 
+        div(class="form-row")
+            label(for="weapon_name", class="form-label") Weapon Name
+            input#weapon_name(type="text", name="weapon_name", class="form-input text-input") 
 
 
-        label(for="attached_to") Attached To: 
-        select#attached_to_drop(name="attached_to")
-            each choice in attachedToOptions
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="attached_to", class="form-label") Attached To 
+            select#attached_to_drop(name="attached_to", class="form-input")
+                each choice in attachedToOptions
+                    option(value=choice) #{choice}  
 
-        label(for="part_class") Part Class: 
-        select#part_class_drop(name="part_class")
-            each choice in partClassOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="part_class", class="form-label") Part Class 
+            select#part_class_drop(name="part_class", class="form-input")
+                each choice in partClassOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="attack_type") Attack Type: 
-        select#attack_type_drop(name="attack_type")
-            each choice in attackTypeOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="attack_type", class="form-label") Attack Type 
+            select#attack_type_drop(name="attack_type", class="form-input")
+                each choice in attackTypeOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="weapon_type") Weapon Type: 
-        select#weapon_type_drop(name="weapon_type")
-            each choice in weaponTypeOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="weapon_type", class="form-label") Weapon Type 
+            select#weapon_type_drop(name="weapon_type", class="form-input")
+                each choice in weaponTypeOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="reload_type") Reload Type: 
-        select#reload_type_drop(name="reload_type")
-            each choice in reloadTypeOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="reload_type", class="form-label") Reload Type 
+            select#reload_type_drop(name="reload_type", class="form-input")
+                each choice in reloadTypeOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="additional_effects") Additional Effects: 
-        select#additional_effects_drop(name="additional_effects")
-            each choice in addtionalEffectsOptions 
-                option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="additional_effects", class="form-label") Additional Effects 
+            select#additional_effects_drop(name="additional_effects", class="form-input")
+                each choice in addtionalEffectsOptions 
+                    option(value=choice) #{choice}  
 
-        label(for="manufacturer") Manufacturer: 
-        select#manufacturers_drop(name="manufacturer")
-            each choice in manufacturerOptions 
-                option(value=choice.name) #{choice.name}  
+        div(class="form-row")
+            label(for="manufacturer", class="form-label") Manufacturer 
+            select#manufacturers_drop(name="manufacturer", class="form-input")
+                each choice in manufacturerOptions 
+                    option(value=choice.name) #{choice.name}  
 
 
 
-        button(type="submit") Create Weapon
+        button(type="submit", class="submit-btn") Create Weapon
 
     if errors
         ul
