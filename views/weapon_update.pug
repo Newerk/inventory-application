@@ -1,68 +1,77 @@
 extends layout 
 
 block content 
-    h1= title
+    div(class="header-solid")
+        h1= title
 
     form(method="post") 
-        label(for="weapon_name") Weapon Name: 
-        input#weapon_name(type="text", name="weapon_name", value=weapon.name) 
+        div(class="form-row")
+            label(for="weapon_name", class="form-label") Weapon Name 
+            input#weapon_name(type="text", name="weapon_name", value=weapon.name, class="form-input text-input") 
 
 
-        label(for="attached_to") Attached To: 
-        select#attached_to_drop(name="attached-to")
-            each choice in attachedToOptions
-                if choice ===  weapon.attached_to
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="attached_to", class="form-label") Attached To 
+            select#attached_to_drop(name="attached-to", class="form-input")
+                each choice in attachedToOptions
+                    if choice ===  weapon.attached_to
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="parts-class") Parts Class: 
-        select#part_class_drop(name="parts-class")
-            each choice in partClassOptions 
-                if choice ===  weapon.part_class
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="parts-class", class="form-label") Parts Class 
+            select#part_class_drop(name="parts-class", class="form-input")
+                each choice in partClassOptions 
+                    if choice ===  weapon.part_class
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="attack-type") Attack Type: 
-        select#attack_type_drop(name="attack-type")
-            each choice in attackTypeOptions 
-                if choice ===  weapon.attack_type
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="attack-type", class="form-label") Attack Type 
+            select#attack_type_drop(name="attack-type", class="form-input")
+                each choice in attackTypeOptions 
+                    if choice ===  weapon.attack_type
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="weapon-type") Weapon Type: 
-        select#weapon_type_drop(name="weapon-type")
-            each choice in weaponTypeOptions 
-                if choice ===  weapon.weapon_type
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="weapon-type", class="form-label") Weapon Type 
+            select#weapon_type_drop(name="weapon-type", class="form-input")
+                each choice in weaponTypeOptions 
+                    if choice ===  weapon.weapon_type
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="reload-type") Reload Type: 
-        select#reload_type_drop(name="reload-type")
-            each choice in reloadTypeOptions 
-                if choice ===  weapon.reload_type
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="reload-type", class="form-label") Reload Type 
+            select#reload_type_drop(name="reload-type", class="form-input")
+                each choice in reloadTypeOptions 
+                    if choice ===  weapon.reload_type
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="additional-effects") Additional Effects: 
-        select#additional_effects_drop(name="additional-effects")
-            each choice in addtionalEffectsOptions 
-                if choice ===  weapon.additional_effects
-                    option(value=choice selected="selected") #{choice}
-                else 
-                    option(value=choice) #{choice}  
+        div(class="form-row")
+            label(for="additional-effects", class="form-label") Additional Effects 
+            select#additional_effects_drop(name="additional-effects", class="form-input")
+                each choice in addtionalEffectsOptions 
+                    if choice ===  weapon.additional_effects
+                        option(value=choice selected="selected") #{choice}
+                    else 
+                        option(value=choice) #{choice}  
 
-        label(for="manufacturer") Manufacturer: 
-        select#manufacturers_drop(name="manufacturer")
-            each choice in manufacturerOptions 
-                if choice.name ===  weapon.manufacturer.name
-                    option(value=choice.name selected="selected") #{choice.name}
-                else 
-                    option(value=choice.name) #{choice.name}  
+        div(class="form-row")
+            label(for="manufacturer", class="form-label") Manufacturer 
+            select#manufacturers_drop(name="manufacturer", class="form-input")
+                each choice in manufacturerOptions 
+                    if choice.name ===  weapon.manufacturer.name
+                        option(value=choice.name selected="selected") #{choice.name}
+                    else 
+                        option(value=choice.name) #{choice.name}  
 
 
 

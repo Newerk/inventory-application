@@ -1,7 +1,8 @@
 extends layout 
 
 block content 
-    h1= part.name
+    div(class="header-solid")
+        h1= part.name
     h2 Details:  
     p #{part.part_type}
     p Manufacturer: #{part.manufacturer.name}
