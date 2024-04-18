@@ -13,7 +13,7 @@ block content
     else
         div(class="ul-container") 
             if weapons.length  
-                h2 Weapons
+                h2 Weapons #{'('}#{weapons.length}#{')'}
                 ul(class="ul-container")  
                     - for(var i = 0; i < weapons.length; i++) {
                         if i % 2 === 0
@@ -29,7 +29,7 @@ block content
 
 
             if parts.length  
-                h2 Parts
+                h2 Parts #{'('}#{parts.length}#{')'}
                 ul(class="ul-container")  
                     - for(var i = 0; i < parts.length; i++) {
                         if i % 2 === 0

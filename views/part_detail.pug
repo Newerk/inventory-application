@@ -1,11 +1,17 @@
 extends layout 
 
 block content 
-    div(class="header-gradient")
-        p= part.part_type.toUpperCase()
-        h1= part.name
-    h2(class="details-h2") Part Details   
-    p Manufacturer: #{part.manufacturer.name}
+    div(class="detail-header-wrapper")
+        div(class="header-gradient")
+            p= part.part_type.toUpperCase()
+            h1= part.name
+        div(class="update-delete-wrapper")
+            a(href=`${part.url}/update`, class="update-btn") Update Part   
+            a(href=`${part.url}/delete`, class="delete-btn") Delete Part   
+    h2(class="details-h2") Part Details
+    div(class="p-wrapper")   
+        p(class="p-field") Manufacturer 
+        div(class="p-value") #{part.manufacturer.name}
 
-    a(href=`${part.url}/update`) Update Part   
-    a(href=`${part.url}/delete`) Delete Part   
+    
+    

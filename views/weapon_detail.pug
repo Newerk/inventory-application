@@ -1,16 +1,33 @@
 extends layout 
 
 block content 
-    div(class="header-gradient")
-        p= weapon.attached_to.toUpperCase()
-        h1= title 
-    h2(class="details-h2") Weapon Details 
-    p Part Class: #{weapon.part_class}
-    p Attack Type: #{weapon.attack_type}
-    p Weapon Type: #{weapon.weapon_type}
-    p Reload Type: #{weapon.reload_type}
-    p Additional Effects: #{weapon.additional_effects}
-    p Manufacturer: #{weapon.manufacturer.name}
+    div(class="detail-header-wrapper")
+        div(class="header-gradient")
+            p= weapon.attached_to.toUpperCase()
+            h1= title 
+        div(class="update-delete-wrapper")
+            a(href=`${weapon.url}/update`, class="update-btn") Update 
+            a(href=`${weapon.url}/delete`, class="delete-btn") Delete 
 
-    a(href=`${weapon.url}/update`) Update 
-    a(href=`${weapon.url}/delete`) Delete 
+    h2(class="details-h2") Weapon Details 
+    div(class="p-wrapper")   
+        p(class="p-field") Part Class 
+        div(class="p-value") #{weapon.part_class}
+    div(class="p-wrapper")
+        p(class="p-field") Attack Type 
+        div(class="p-value") #{weapon.attack_type}
+    div(class="p-wrapper")
+        p(class="p-field") Weapon Type 
+        div(class="p-value") #{weapon.weapon_type}
+    div(class="p-wrapper")
+        p(class="p-field") Reload Type 
+        div(class="p-value") #{weapon.reload_type}
+    div(class="p-wrapper")
+        p(class="p-field") Additional Effects 
+        div(class="p-value") #{weapon.additional_effects}
+    div(class="p-wrapper")
+        p(class="p-field") Manufacturer 
+        div(class="p-value") #{weapon.manufacturer.name}
+
+    
+    
