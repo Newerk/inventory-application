@@ -119,7 +119,7 @@ async function createWeapons() {
 
   await Promise.all([
     weaponCreate(
-      "PB-033m ASHMEAD",
+      "PB-033M ASHMEAD",
       "Arms",
       "Pile Bunker",
       "Kinetic",

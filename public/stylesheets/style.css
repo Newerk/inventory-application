@@ -321,7 +321,7 @@ h1 {
   border-style: none;
   color: var(--text-color);
   cursor: pointer;
-  margin-right: .4rem;
+  margin-right: 0.4rem;
 }
 
 form {
@@ -358,5 +358,43 @@ form {
 }
 
 .text-input {
-  cursor:text;
+  cursor: text;
+}
+
+.delete-pg-btn-wrapper {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.delete-pg-btn {
+  width: 4rem;
+}
+
+.warning {
+  font-family: var(--header-font);
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+/* #corp-delete-data {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+} */
+
+/* #corp-delete-data > p {
+  background-color: var(--title-bg);
+  width: 12rem;
+  padding: 0.4rem;
+  font-size: 18px;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+} */
+
+.corp-data {
+  width: 20rem;
+}
+
+.del-page > .warning {
+  padding-bottom: 0;
 }

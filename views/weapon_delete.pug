@@ -3,21 +3,44 @@ extends layout
 block content
     div(class="header-solid")
         h1= title
-    h2 Details 
-    p Category: #{weapon.attached_to}
-    p Part Class: #{weapon.part_class}
-    p Attack Type: #{weapon.attack_type}
-    p Weapon Type: #{weapon.weapon_type}
-    p Reload Type: #{weapon.reload_type}
-    p Additional Effects: #{weapon.additional_effects}
 
-    div
-        p.warning Are you sure you want to delete this corporation?
-    form(method="post") 
-        input(type='hidden', name='weaponid', value=weapon._id )
-        button(type="submit", class="submit-btn") Yes
-    form(action=weapon.url, method="get")
-        button(type="submit", class="submit-btn") No
+    div.del-page
+        p.warning Are you sure you want to delete this weapon?
+    
+    h2.details-h2 Details 
+
+    div.form-row
+        p.form-label Category
+        p.form-input #{weapon.attached_to}
+
+    div.form-row
+        p.form-label Part Class
+        p.form-input #{weapon.part_class}
+
+    div.form-row
+        p.form-label Attack Type
+        p.form-input #{weapon.attack_type}
+
+    div.form-row
+        p.form-label Weapon Type
+        p.form-input #{weapon.weapon_type}
+
+    div.form-row
+        p.form-label Reload Type
+        p.form-input #{weapon.reload_type}
+
+    div.form-row
+        p.form-label Additional Effects
+        p.form-input #{weapon.additional_effects}
+
+
+
+    div.delete-pg-btn-wrapper
+        form(method="post") 
+            input(type='hidden', name='weaponid', value=weapon._id )
+            button(type="submit", class="submit-btn delete-pg-btn") Yes
+        form(action=weapon.url, method="get")
+            button(type="submit", class="submit-btn delete-pg-btn") No
 
 
 
