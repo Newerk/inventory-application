@@ -4,6 +4,9 @@ const corporation_controller = require("../controllers/corporationController");
 const weapon_controller = require("../controllers/weaponController");
 const part_controller = require("../controllers/partController");
 const asyncHandler = require("express-async-handler");
+const Coporation = require("../models/coporation");
+const Weapon = require("../models/weapon");
+const Part = require("../models/part");
 
 //HOMEPAGE
 router.get(
@@ -11,8 +14,17 @@ router.get(
 
   //placeholder
   asyncHandler(async (req, res) => {
+    const [totalCorps, totalWeapons, totalParts] = await Promise.all([
+      Coporation.find().exec(),
+      Weapon.find().exec(),
+      Part.find().exec(),
+    ]);
+
     res.render("index", {
-      title: "Welcome to The Shop 621",
+      title: "Welcome to The Shop, 621",
+      totalCorps: totalCorps.length,
+      totalWeapons: totalWeapons.length,
+      totalParts: totalParts.length,
     });
   })
 );

@@ -7,31 +7,61 @@
   <body>
     <div class="body-container">
       <ul class="sidebar-nav">
-        <li><a href="/catalog">Home</a></li>
-        <li><a href="/catalog/corporations">All Corporations</a></li>
-        <li><a href="/catalog/weapons">All Weapons</a>
-          <ul> 
-            <li> <a href="/catalog/weapons/arms">Arm </a></li>
-            <li> <a href="/catalog/weapons/back">Back </a></li>
+        <li> <a href="/catalog"> 
+            <button class="link">Home</button></a></li>
+        <li><a href="/catalog/corporations"> 
+            <button class="link">All Corporations</button></a></li>
+        <li><a href="/catalog/weapons"> 
+            <button class="link top-most">All Weapons</button></a>
+          <ul class="sublinks"> 
+            <li> <a href="/catalog/weapons/arms">
+                <button class="link">Arms </button></a></li>
+            <li> <a href="/catalog/weapons/back">
+                <button class="link">Back </button></a></li>
           </ul>
         </li>
-        <li><a href="/catalog/parts">All Parts </a>
-          <ul> 
-            <li> <a href="/catalog/parts/head">Head </a></li>
-            <li> <a href="/catalog/parts/body">Body </a></li>
-            <li> <a href="/catalog/parts/arms">Arms </a></li>
-            <li> <a href="/catalog/parts/legs">Legs </a></li>
-            <li> <a href="/catalog/parts/boosters">Boosters </a></li>
-            <li> <a href="/catalog/parts/fcs">FCS </a></li>
-            <li> <a href="/catalog/parts/generators">Generators </a></li>
+        <li><a href="/catalog/parts"> 
+            <button class="link top-most">All Parts </button></a>
+          <ul class="sublinks"> 
+            <li> <a href="/catalog/parts/head">
+                <button class="link">Head </button></a></li>
+            <li> <a href="/catalog/parts/body">
+                <button class="link">Body </button></a></li>
+            <li> <a href="/catalog/parts/arms">
+                <button class="link">Arms </button></a></li>
+            <li> <a href="/catalog/parts/legs">
+                <button class="link">Legs </button></a></li>
+            <li> <a href="/catalog/parts/boosters">
+                <button class="link">Boosters </button></a></li>
+            <li> <a href="/catalog/parts/fcs">
+                <button class="link">FCS </button></a></li>
+            <li> <a href="/catalog/parts/generators">
+                <button class="link">Generators </button></a></li>
           </ul>
         </li>
-        <li><a href="/catalog/corporation/create">Create Corporation</a></li>
-        <li><a href="/catalog/weapon/create">Create Weapon</a></li>
-        <li><a href="/catalog/part/create">Create Part</a></li>
+        <li><a href="/catalog/corporation/create"> 
+            <button class="link">Create Corporation</button></a></li>
+        <li><a href="/catalog/weapon/create"> 
+            <button class="link">Create Weapon</button></a></li>
+        <li><a href="/catalog/part/create"> 
+            <button class="link">Create Part</button></a></li>
       </ul>
       <div class="content-container">
         <h1></h1>
+        <div id="dashboard-wrapper">
+          <div class="form-row">
+            <p class="form-label">Total Corporations </p>
+            <p class="form-input"></p>
+          </div>
+          <div class="form-row">
+            <p class="form-label">Total Weapons </p>
+            <p class="form-input"></p>
+          </div>
+          <div class="form-row">
+            <p class="form-label">Total Parts </p>
+            <p class="form-input"></p>
+          </div>
+        </div>
       </div>
     </div>
   </body>

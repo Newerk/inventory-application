@@ -2,4 +2,16 @@ extends layout
 
 block content
   h1= title
-  
+
+  div#dashboard-wrapper
+    div.form-row
+      p.form-label Total Corporations 
+      p.form-input #{totalCorps}
+
+    div.form-row
+      p.form-label Total Weapons 
+      p.form-input #{totalWeapons}
+
+    div.form-row
+      p.form-label Total Parts 
+      p.form-input #{totalParts}

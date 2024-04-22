@@ -377,24 +377,14 @@ form {
   padding-bottom: 1rem;
 }
 
-/* #corp-delete-data {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-} */
-
-/* #corp-delete-data > p {
-  background-color: var(--title-bg);
-  width: 12rem;
-  padding: 0.4rem;
-  font-size: 18px;
-  margin: 0.4rem 0.4rem 0.4rem 0;
-} */
-
 .corp-data {
   width: 20rem;
 }
 
 .del-page > .warning {
   padding-bottom: 0;
+}
+
+#dashboard-wrapper {
+  margin-top: 2rem;
 }
