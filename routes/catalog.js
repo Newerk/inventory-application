@@ -11,8 +11,6 @@ const Part = require("../models/part");
 //HOMEPAGE
 router.get(
   "/",
-
-  //placeholder
   asyncHandler(async (req, res) => {
     const [totalCorps, totalWeapons, totalParts] = await Promise.all([
       Coporation.find().exec(),

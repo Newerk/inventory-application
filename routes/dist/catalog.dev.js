@@ -27,8 +27,7 @@ var Weapon = require("../models/weapon");
 var Part = require("../models/part"); //HOMEPAGE
 
 
-router.get("/", //placeholder
-asyncHandler(function _callee(req, res) {
+router.get("/", asyncHandler(function _callee(req, res) {
   var _ref, _ref2, totalCorps, totalWeapons, totalParts;
 
   return regeneratorRuntime.async(function _callee$(_context) {
